@@ -1,11 +1,9 @@
 body {
   padding: 10px 0px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
-  color: #00B7FF;
-}
+  color: #00B7FF; }
 
 footer {
   position: absolute;
@@ -14,11 +12,21 @@ footer {
   left: 0;
   padding: 1rem;
   background-color: #efefef;
-  text-align: center;
-}
+  text-align: center; }
 
 #hiveIcon {
   position: absolute;
   right: 0;
-  top: 0;
-}
+  top: 0; }
+
+#beePic, #googleExample {
+  width: 28vw; }
+
+.profileInfo {
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  margin: 10px;
+  padding: 0 0 10px 10px; }
+
+/*# sourceMappingURL=style.css.map */
