@@ -4,7 +4,7 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: 'postgres://localhost/local-strategy'
+    connection: 'postgres://localhost/thehive'
   },
 
   production: {
