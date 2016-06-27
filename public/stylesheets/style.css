@@ -1,8 +1,24 @@
 body {
-  padding: 50px;
+  padding: 10px 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+
+#hiveIcon {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
