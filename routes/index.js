@@ -23,6 +23,12 @@ router.get('/aboutUs', function(req, res, next) {
     });
 });
 
+router.get('/aboutUs', function(req, res, next) {
+    res.render('aboutUs', {
+        title: 'About Us'
+    });
+});
+
 router.get('/auth/google', auth.passport.authenticate('google', {
     scope: ['openid email profile']
 }));
@@ -41,43 +47,43 @@ router.get('/signOut', function(request, response, next) {
 
 router.get('/userProfile', ensureAuthenticated, function(req, res, next) {
     res.render('userProfile', {
-        title: 'Express'
+        title: 'User Profile'
     });
 });
 
 router.get('/editProfile',ensureAuthenticated, function(req, res, next) {
     res.render('editProfile', {
-        title: 'Express'
+        title: 'Edit Profile'
     });
 });
 
 router.get('/addBee', ensureAuthenticated,function(req, res, next) {
     res.render('addBee', {
-        title: 'Express'
+        title: 'Add Bee'
     });
 });
 
 router.get('/beeInfo',ensureAuthenticated, function(req, res, next) {
     res.render('beeInfo', {
-        title: 'Express'
+        title: 'Bee Info'
     });
 });
 
 router.get('/beeMap', function(req, res, next) {
     res.render('beeMap', {
-        title: 'Express'
+        title: 'Bee Map'
     });
 });
 
 router.post('/editProfile',ensureAuthenticated,  function(req, res, next) {
     res.render('editProfile', {
-        title: 'Express'
+        title: 'Edit Profile'
     });
 });
 
 router.post('/addBee',ensureAuthenticated, function(req, res, next) {
     res.render('addBee', {
-        title: 'Express'
+        title: 'Add Bee'
     });
 });
 
