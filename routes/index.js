@@ -5,12 +5,23 @@ var auth = require('../auth');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'The Hive' })
-
+  res.render('index', { title: 'The Hive', user: request.user })
 });
 
-router.get('/login', function(req, res, next) {
-  res.render('login', { title: 'Express' });
+router.get('/auth/google', auth.passport.authenticate('google', { scope: ['openid email profile'] }));
+
+router.get('/auth/google', auth.passport.authenticate('google', {scope: ['openid email profile'] }));
+
+router.get('/auth/google/callback', auth.passport.authenticate('google', {
+  failureRedirect: '/login'
+}),
+  function(request, response){
+    response.redirect('/');
+});
+
+router.get('/signOut', function(request, response, next) {
+  request.session = null;
+  response.redirect('/');
 });
 
 router.get('/userProfile', function(req, res, next) {
