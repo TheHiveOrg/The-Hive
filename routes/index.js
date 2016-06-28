@@ -2,12 +2,13 @@ var express = require('express');
 var router = express.Router();
 var db = require('../db/api');
 var auth = require('../auth');
+var knex = require('../db/knex')
 
 function ensureAuthenticated(request, response, next){
   if(request.isAuthenticated()){
     return next();
   }
-  response.redirect('/login');
+  response.redirect('/auth/google');
 }
 
 /* GET home page. */
@@ -34,10 +35,10 @@ router.get('/auth/google', auth.passport.authenticate('google', {
 }));
 
 router.get('/auth/google/callback', auth.passport.authenticate('google', {
-        failureRedirect: '/login'
+        failureRedirect: '/auth/google'
     }),
     function(request, response) {
-        response.redirect('/');
+        response.redirect('/userProfile');
     });
 
 router.get('/signOut', function(request, response, next) {
