@@ -29,14 +29,16 @@
               <span class = "icon-bar"></span>
               <span class = "icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">The Hive</a>
+            <a class="navbar-brand" href="/">The Hive</a>
           </div>
           <div class="collapse navbar-collapse" id="hiveNav">
             <ul class="nav navbar-nav">
               <li><a href="/userProfile">Home</a></li>
               <li><a href="/beeMap">Bee Map</a></li>
               <li><a href="/editProfile">Edit My Info</a></li>
+              {{#if user}}
               <li><a href="/signOut">Sign Out</a></li>
+              {{/if}}
             </ul>
             <img id="hiveIcon" src="" alt="Our Icon"/>
           </div>
@@ -61,7 +63,7 @@
           </div>
         </footer>
     </div>
-    
+
 
   </body>
 </html>
