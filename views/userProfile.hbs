@@ -3,13 +3,13 @@
     {{!--Lefthand section with userinfo and avatar image--}}
     <div class="row">
       <div class="col-md-12">
-        <h2>{{username}}</h2>
+        <h2>{{username}}</h2>{{!--Username from user table, needs handlbars and knex--}}
       </div>
 
     </div>
     <div class="row">
       <div class="col-md-12">
-        <img src="/images/megachile_apicalis.jpg" alt="User image/avatar" id="avatarPic"/>
+        <img src="/images/megachile_apicalis.jpg" alt="User image/avatar" id="avatarPic"/>{{!--User image URL from user table, needs handlebars and knex--}}
       </div>
 
     </div>
@@ -17,10 +17,8 @@
       <div class="col-md-12 profileInfo">
         <h2>Profile Info</h2>
         <ul>
-          <li>Info</li>
-          <li>Info</li>
-          <li>Info</li>
-          <li>Info</li>
+          <li>First Name</li>{{!--First name from user table, needs handlebars and knex--}}
+          <li>Last Name</li>{{!--Last name from user table, needs handlebars and knex--}}
         </ul>
         <a href="/editProfile"><button>Edit Profile</button></a>
       </div>
@@ -35,7 +33,7 @@
 
   <div class="col-md-4 beeFeed">
     {{!--Middle section with bee feed, needs to prepend for added bees--}}
-    <div class="row">
+    <div class="row">{{!--Need to do a FOR EACH based off of bees added by the logged in user--}}
       <div class="col-md-12">
         <h2>Bee Feed</h2>
         <ul>
@@ -49,7 +47,7 @@
     </div>
   </div>
 
-  <div class="col-md-4 beeFacts">
+  <div class="col-md-4 beeFacts">{{!--Randomly choose a fact from a series of facts??--}}
     {{!--Righthand section with bee fact of the day--}}
     <div class="row">
       <div class="col-md-12">

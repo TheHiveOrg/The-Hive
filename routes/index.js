@@ -2,17 +2,16 @@ var express = require('express');
 var router = express.Router();
 var db = require('../db/api');
 var auth = require('../auth');
-
 var beeseed = require('../beeseed');
 
-var knex = require('../db/knex')
+var knex = require('../db/knex');
 
 
-function ensureAuthenticated(request, response, next){
-  if(request.isAuthenticated()){
-    return next();
-  }
-  response.redirect('/auth/google');
+function ensureAuthenticated(request, response, next) {
+    if (request.isAuthenticated()) {
+        return next();
+    }
+    response.redirect('/auth/google');
 }
 
 /* GET home page. */
@@ -61,19 +60,19 @@ router.get('/userProfile', ensureAuthenticated, function(req, res, next) {
     });
 });
 
-router.get('/editProfile',ensureAuthenticated, function(req, res, next) {
+router.get('/editProfile', ensureAuthenticated, function(req, res, next) {
     res.render('editProfile', {
         title: 'Edit Profile'
     });
 });
 
-router.get('/addBee', ensureAuthenticated,function(req, res, next) {
+router.get('/addBee', ensureAuthenticated, function(req, res, next) {
     res.render('addBee', {
         title: 'Add Bee'
     });
 });
 
-router.get('/beeInfo',ensureAuthenticated, function(req, res, next) {
+router.get('/beeInfo', ensureAuthenticated, function(req, res, next) {
     res.render('beeInfo', {
         title: 'Bee Info'
     });
@@ -85,13 +84,13 @@ router.get('/beeMap', function(req, res, next) {
     });
 });
 
-router.post('/editProfile',ensureAuthenticated,  function(req, res, next) {
+router.post('/editProfile', ensureAuthenticated, function(req, res, next) {
     res.render('editProfile', {
         title: 'Edit Profile'
     });
 });
 
-router.post('/addBee',ensureAuthenticated, function(req, res, next) {
+router.post('/addBee', ensureAuthenticated, function(req, res, next) {
     res.render('addBee', {
         title: 'Add Bee'
     });
