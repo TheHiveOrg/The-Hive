@@ -2,10 +2,11 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('bee_info', function(table) {
     table.increments();
-    table.text('name');
+    table.text('genus');
+    table.text('species');
     table.text('description');
     table.text('image');
-    table.text('species');
+
   })
 };
 
