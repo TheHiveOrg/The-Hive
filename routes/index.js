@@ -3,9 +3,22 @@ var router = express.Router();
 var db = require('../db/api');
 var auth = require('../auth');
 
+function ensureAuthenticated(request, response, next){
+  if(request.isAuthenticated()){
+    return next();
+  }
+  response.redirect('/login');
+}
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
     res.render('index', {
+        title: 'The Hive'
+    });
+});
+// get about us
+router.get('/aboutUs', function(req, res, next) {
+    res.render('aboutUs', {
         title: 'The Hive'
     });
 });
@@ -26,25 +39,25 @@ router.get('/signOut', function(request, response, next) {
     response.redirect('/');
 });
 
-router.get('/userProfile', function(req, res, next) {
+router.get('/userProfile', ensureAuthenticated, function(req, res, next) {
     res.render('userProfile', {
         title: 'Express'
     });
 });
 
-router.get('/editProfile', function(req, res, next) {
+router.get('/editProfile',ensureAuthenticated, function(req, res, next) {
     res.render('editProfile', {
         title: 'Express'
     });
 });
 
-router.get('/addBee', function(req, res, next) {
+router.get('/addBee', ensureAuthenticated,function(req, res, next) {
     res.render('addBee', {
         title: 'Express'
     });
 });
 
-router.get('/beeInfo', function(req, res, next) {
+router.get('/beeInfo',ensureAuthenticated, function(req, res, next) {
     res.render('beeInfo', {
         title: 'Express'
     });
@@ -56,16 +69,19 @@ router.get('/beeMap', function(req, res, next) {
     });
 });
 
-router.post('/editProfile', function(req, res, next) {
+router.post('/editProfile',ensureAuthenticated,  function(req, res, next) {
     res.render('editProfile', {
         title: 'Express'
     });
 });
 
-router.post('/addBee', function(req, res, next) {
+router.post('/addBee',ensureAuthenticated, function(req, res, next) {
     res.render('addBee', {
         title: 'Express'
     });
 });
+
+
+
 
 module.exports = router;
