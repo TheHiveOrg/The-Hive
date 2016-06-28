@@ -30,17 +30,6 @@ footer {
   background-color: #efefef;
   text-align: center; }
 
-#hiveIcon {
-  position: absolute;
-  right: 0;
-  top: 0; }
-
-#beePic, #googleExample {
-  width: 28vw; }
-
-#beeFact, #avatarPic, #beeInfoImage {
-  width: 20vw; }
-
 .beeFeedPost {
   width: 10vw;
   margin: 10px; }
@@ -65,5 +54,16 @@ footer {
 #map {
   height: 100%;
   width: 95%; }
+
+#beePic, #googleExample {
+  width: 28vw; }
+
+#beeFact, #avatarPic, #beeInfoImage {
+  width: 20vw; }
+
+#hiveIcon {
+  position: absolute;
+  right: 0;
+  top: 0; }
 
 /*# sourceMappingURL=style.css.map */
