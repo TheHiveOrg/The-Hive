@@ -2,13 +2,17 @@ var express = require('express');
 var router = express.Router();
 var db = require('../db/api');
 var auth = require('../auth');
+
 var beeseed = require('../beeseed');
+
+var knex = require('../db/knex')
+
 
 function ensureAuthenticated(request, response, next){
   if(request.isAuthenticated()){
     return next();
   }
-  response.redirect('/login');
+  response.redirect('/auth/google');
 }
 
 /* GET home page. */
@@ -29,15 +33,21 @@ router.get('/aboutUs', function(req, res, next) {
     });
 });
 
+router.get('/aboutUs', function(req, res, next) {
+    res.render('aboutUs', {
+        title: 'About Us'
+    });
+});
+
 router.get('/auth/google', auth.passport.authenticate('google', {
     scope: ['openid email profile']
 }));
 
 router.get('/auth/google/callback', auth.passport.authenticate('google', {
-        failureRedirect: '/login'
+        failureRedirect: '/auth/google'
     }),
     function(request, response) {
-        response.redirect('/');
+        response.redirect('/userProfile');
     });
 
 router.get('/signOut', function(request, response, next) {
@@ -47,43 +57,43 @@ router.get('/signOut', function(request, response, next) {
 
 router.get('/userProfile', ensureAuthenticated, function(req, res, next) {
     res.render('userProfile', {
-        title: 'Express'
+        title: 'User Profile'
     });
 });
 
 router.get('/editProfile',ensureAuthenticated, function(req, res, next) {
     res.render('editProfile', {
-        title: 'Express'
+        title: 'Edit Profile'
     });
 });
 
 router.get('/addBee', ensureAuthenticated,function(req, res, next) {
     res.render('addBee', {
-        title: 'Express'
+        title: 'Add Bee'
     });
 });
 
 router.get('/beeInfo',ensureAuthenticated, function(req, res, next) {
     res.render('beeInfo', {
-        title: 'Express'
+        title: 'Bee Info'
     });
 });
 
 router.get('/beeMap', function(req, res, next) {
     res.render('beeMap', {
-        title: 'Express'
+        title: 'Bee Map'
     });
 });
 
 router.post('/editProfile',ensureAuthenticated,  function(req, res, next) {
     res.render('editProfile', {
-        title: 'Express'
+        title: 'Edit Profile'
     });
 });
 
 router.post('/addBee',ensureAuthenticated, function(req, res, next) {
     res.render('addBee', {
-        title: 'Express'
+        title: 'Add Bee'
     });
 });
 
