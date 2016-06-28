@@ -1,10 +1,11 @@
 var knex = require('./knex');
 module.exports = {
   findUserById: function(profileId){
-    return knex('user').select().where({google_id: profileId.id}).first().then(function(data) {
-      console.log(data);
+    return knex('user').select().where("google_id", profileId).first().then(function(data) {
+      if(data){
+      return data.google_id;
+    }
     });
-
   },
   createUser: function(profileId){
     return knex('user').insert({first_name: profileId.name.givenName,
@@ -12,6 +13,5 @@ module.exports = {
                                 username: profileId.emails[0].value,
                                 avatar: profileId.photos[0].value,
                                 google_id: profileId.id})
-
     }
 };
