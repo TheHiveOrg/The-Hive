@@ -3,7 +3,7 @@
     {{!--Lefthand section with userinfo and avatar image--}}
     <div class="row">
       <div class="col-md-12">
-        <h2>{{username}}</h2>{{!--Username from user table, needs handlbars and knex--}}
+        <h2>{{username.first_name}} {{username.last_name}}</h2>
       </div>
 
     </div>
@@ -17,8 +17,8 @@
       <div class="col-md-12 profileInfo">
         <h2>Profile Info</h2>
         <ul>
-          <li>First Name</li>{{!--First name from user table, needs handlebars and knex--}}
-          <li>Last Name</li>{{!--Last name from user table, needs handlebars and knex--}}
+          <li>{{username.first_name}}</li>{{!--First name from user table, needs handlebars and knex--}}
+          <li>{{username.last_name}}</li>{{!--Last name from user table, needs handlebars and knex--}}
         </ul>
         <a href="/editProfile"><button>Edit Profile</button></a>
       </div>
