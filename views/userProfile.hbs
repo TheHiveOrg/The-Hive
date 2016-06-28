@@ -3,12 +3,6 @@
     {{!--Lefthand section with userinfo and avatar image--}}
     <div class="row">
       <div class="col-md-12">
-        <h2>{{username.first_name}} {{username.last_name}}</h2>{{!--Username from user table, needs handlbars and knex--}}
-      </div>
-
-    </div>
-    <div class="row">
-      <div class="col-md-12">
         <img src="/images/megachile_apicalis.jpg" alt="User image/avatar" id="avatarPic"/>{{!--User image URL from user table, needs handlebars and knex--}}
       </div>
 
@@ -19,6 +13,8 @@
         <ul>
           <li>First Name</li>{{!--First name from user table, needs handlebars and knex--}}
           <li>Last Name</li>{{!--Last name from user table, needs handlebars and knex--}}
+          <li>Age</li>{{!--Age from user table, needs handlebars and knex--}}
+          <li>About Me</li>{{!--aboutMe from user table, needs handlebars and knex--}}
         </ul>
         <a href="/editProfile"><button>Edit Profile</button></a>
       </div>
