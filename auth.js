@@ -2,7 +2,6 @@ var db = require('./db/api');
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 require('dotenv').config();
-
 passport.serializeUser(function(user, done){
   done(null, user);
 });
@@ -15,7 +14,7 @@ passport.use(new GoogleStrategy({
   callbackURL: 'http://127.0.0.1:3000/auth/google/callback'
 },
 function(accessToken, refreshToken, profile, done){
-   db.findUserById(profile).then(function(id){
+   db.findUserById(profile.id).then(function(id){
      if(id){
        return done(null, profile);
      }else{
