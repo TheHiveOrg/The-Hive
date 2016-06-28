@@ -56,9 +56,12 @@ router.get('/signOut', function(request, response, next) {
 });
 
 router.get('/userProfile', ensureAuthenticated, function(req, res, next) {
+  knex('user').select().where("google_id", req.user.id).then(function(data){
+
     res.render('userProfile', {
-        title: 'User Profile'
+        title: 'User Profile', username: data[0]
     });
+  })
 });
 
 router.get('/editProfile',ensureAuthenticated, function(req, res, next) {

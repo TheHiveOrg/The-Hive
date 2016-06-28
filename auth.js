@@ -15,7 +15,7 @@ passport.use(new GoogleStrategy({
   callbackURL: 'http://127.0.0.1:3000/auth/google/callback'
 },
 function(accessToken, refreshToken, profile, done){
-   db.findUserById(profile).then(function(id){
+   db.findUserById(profile.id).then(function(id){
      if(id){
        return done(null, profile);
      }else{
