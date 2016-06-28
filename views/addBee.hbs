@@ -1,4 +1,41 @@
-<div class="row">
+<div class="row dropdown" id="customBee">
+  <div class="col-md-4">
+    <button type="button" name="addABee" id="addABee">Add Your Own Bee</button>
+    <script type="text/javascript">
+        $(document).ready(function(){
+          $("#addABee").on('click', function(){
+            $("#addABeeForm").css("display", "block");
+          });
+        });
+    </script>
+    <form action="/addBee" id="addABeeForm" method="post">
+      <div class="form-group">
+        <label for="genus">Genus:</label>
+        <input type="text" name="genus" placeholder="Enter Genus Here">
+      </div>
+      <div class="form-group">
+        <label for="species">Species:</label>
+        <input type="text" name="species" placeholder="Enter Species Here">
+      </div>
+      <div class="form-group">
+        <label for="description">Bee Description:</label>
+        <textarea name="description" rows="8" cols="40" placeholder="What did the bee look like? How big was it? What was it doing?"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="image">Bee Image:</label>
+        <input type="url" name="image" placeholder="Enter an image URL">
+      </div>
+      <div class="form-group">
+        <label for="Location">Location:</label>
+        <input type="text" name="latitude" placeholder="Latitude">
+        <input type="text" name="longitude" placeholder="Longitude">
+
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row" id="prepopulatedBeeInfo">
   <div class="col-md-1">
     {{!--Placeholder to help center--}}
   </div>
@@ -21,7 +58,6 @@
     {{!--Placeholder to help center--}}
   </div>
 </div>
-
 
 
 <a href="/beeInfo"><button>Bee Info | Personal Map </button></a>
