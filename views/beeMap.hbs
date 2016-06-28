@@ -9,8 +9,26 @@
 
 
 <script>
+var options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0
+};
 
-var marks = [{lat: 38.61687046392973, lng: -95.373046875}, {lat: 37.61687046392973, lng: -92.373046875}, {lat: 32.61687046392973, lng: -98.373046875}];
+function success(pos) {
+  var crd = pos.coords;
+
+  myLoc = {lat: crd.latitude, lng: crd.longitude}
+  console.log(myLoc)
+};
+
+function error(err) {
+  console.warn('ERROR(' + err.code + '): ' + err.message);
+};
+
+navigator.geolocation.getCurrentPosition(success, error, options);
+
+  var marks = [{lat: 38.61687046392973, lng: -95.373046875}, {lat: 37.61687046392973, lng: -92.373046875}, {lat: 32.61687046392973, lng: -98.373046875}];
 
   var map;
 
@@ -45,11 +63,8 @@ var marker = new google.maps.Marker({
 marks.push(marker);
 map.panTo(position);
 }
-
-
-
 // marker.setMap(null);
-  }
+}
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBE2lzib-47xKBY_Qwszr8xKdQdTCd44Rk&callback=initMap&libraries=places"
 async defer></script>
