@@ -7,6 +7,8 @@ exports.up = function(knex, Promise) {
     table.text('username');
     table.text('avatar');
     table.text('google_id');
+    table.integer('userAge');
+    table.text('aboutMe')
   })
 };
 
