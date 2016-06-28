@@ -27,7 +27,7 @@
       </div>
       <div class="form-group">
         <label for="Location">Location:</label>
-        <input type="text" name="latitude" placeholder="Latitude">
+        <input type="text" name="latitude" placeholder="Latitude">{{!--If we grab lat and long from browser we can replace placeholder="" with value="" and fill that in with handle bars for req.params for each--}}
         <input type="text" name="longitude" placeholder="Longitude">
       </div>
       <button type="submit" name="button">Add this Bee to my Map</button>
@@ -35,30 +35,32 @@
   </div>
 </div>
 
-<div class="row" id="prepopulatedBeeInfo">
+<div class="row" id="prepopulatedBeeInfo">{{!--This row will need a FOR EACH in order to create new entry for each bee that is already in our database--}}
   <div class="col-md-1">
     {{!--Placeholder to help center--}}
   </div>
+
+  <form action="/addBee" method="post">
   <div class="col-md-3">
-    <img src="/images/megachile_apicalis.jpg" alt="Bee image for user to pick from" id="beeInfoImage"/>
+    <img src="/images/megachile_apicalis.jpg" alt="Bee image for user to pick from" id="beeInfoImage"/>{{!--Image URL pulled form database, need handlebars--}}
   </div>
   <div class="col-md-4">
-    <h3>Bee Name</h3>
+    <h3>Bee Name</h3>{{!--Bee name from database, need handlebars--}}
     <ul>
-      <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</li>
-      <li>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</li>
-      <li>eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+      <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</li>{{!--Bee description from database, need handlebars--}}
+      <li>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</li>{{!--Bee description from database, need handlebars--}}
+      <li>eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>{{!--Bee description from database, need handlebars--}}
     </ul>
   </div>
   <div class="col-md-3">
     {{!--Field for button to add THIS bee to peronal map--}}
-    <form action="/addBee" method="post">
-      <button type="submit">This is the Bee I Saw</button>
-    </form>
+      <button type="submit">This is the Bee I Saw</button>{{!--Need to grab specific bee by ID and take info to map pages--}}
   </div>
+  </form>
   <div class="col-md-1">
     {{!--Placeholder to help center--}}
   </div>
+
 </div>
 
 
