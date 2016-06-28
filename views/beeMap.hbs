@@ -6,3 +6,50 @@
 
 
 <a href="/userProfile"><button>Home</button></a>
+
+
+<script>
+
+var marks = [{lat: 38.61687046392973, lng: -95.373046875}, {lat: 37.61687046392973, lng: -92.373046875}, {lat: 32.61687046392973, lng: -98.373046875}];
+
+  var map;
+
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 37.0902, lng: -95.7129},
+      zoom: 4
+    });
+
+var infowindow = new google.maps.InfoWindow();
+
+for(var i = 0; i < marks.length; i++){
+    var marker = new google.maps.Marker({
+position: marks[i],
+map: map,
+title: "lat: " + marks[i].lat.toString() + " " + "long: " + marks[i].lng.toString()
+});
+
+
+google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent(this.title);
+            infowindow.open(map, this);
+        });
+}
+
+
+function placeMarker(position, map) {
+var marker = new google.maps.Marker({
+  position: position,
+  map: map
+});
+marks.push(marker);
+map.panTo(position);
+}
+
+
+
+// marker.setMap(null);
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBE2lzib-47xKBY_Qwszr8xKdQdTCd44Rk&callback=initMap&libraries=places"
+async defer></script>
