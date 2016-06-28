@@ -2,7 +2,10 @@ var express = require('express');
 var router = express.Router();
 var db = require('../db/api');
 var auth = require('../auth');
+var beeseed = require('../beeseed');
+
 var knex = require('../db/knex');
+
 
 function ensureAuthenticated(request, response, next) {
     if (request.isAuthenticated()) {
@@ -12,6 +15,11 @@ function ensureAuthenticated(request, response, next) {
 }
 
 /* GET home page. */
+
+router.get('/beeseed', function(req, res) {
+    res.json(beeseed);
+});
+
 router.get('/', function(req, res, next) {
     res.render('index', {
         title: 'The Hive'

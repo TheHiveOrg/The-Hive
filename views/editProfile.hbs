@@ -7,15 +7,24 @@
       <form action="/editProfile" method="post">
         <div class="form-group">
           <label for="firstName">First Name:</label>
-          <input type="text" name="firstName" value="">{{!--put handlbars and user firstname knex reference in value--}}
+          <input type="text" name="firstName" value="">{{!--put handlbars with knex and user firstname knex reference in value--}}
         </div>
         <div class="form-group">
           <label for="lastName">Last Name:</label>
-          <input type="text" name="lastName" value="">{{!--put handlbars and user lastname knex reference in value--}}
+          <input type="text" name="lastName" value="">{{!--put handlbars with knex and user lastname knex reference in value--}}
         </div>
         <div class="form-group">
           <label for="imageUrl">Change your Image:</label>
-          <input type="url" name="imageUrl" value="">{{!--put handlbars and user image url knex reference in value--}}
+          <input type="url" name="imageUrl" value="">{{!--put handlbars with knex and user image url knex reference in value--}}
+        </div>
+        <div class="form-group">
+          <label for="userAge">Age:</label>
+          <input type="number" min="1" max="120" name="userAge" placeholder="1" value="">{{!--put handlebars with knex and user age IF it exists into value="", remove placeholder--}}
+        </div>
+        <div class="form-group">
+          <label for="aboutMe">About Me:</label>
+          <textarea name="aboutMe" rows="8" cols="40" placeholder="Tell us about yourself" value=""></textarea>{{!--put handlebars with knex and users aboutMe IF it exists into value="", remove placeholder--}}
+
         </div>
         <button type="submit">Save These Changes</button>
       </form>

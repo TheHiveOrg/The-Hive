@@ -9,6 +9,11 @@
 
 
 <script>
+
+
+
+
+
 var options = {
   enableHighAccuracy: true,
   timeout: 5000,
@@ -19,7 +24,7 @@ function success(pos) {
   var crd = pos.coords;
 
   myLoc = {lat: crd.latitude, lng: crd.longitude}
-  console.log(myLoc)
+
 };
 
 function error(err) {
@@ -27,6 +32,10 @@ function error(err) {
 };
 
 navigator.geolocation.getCurrentPosition(success, error, options);
+
+
+
+
 
   var marks = [{lat: 38.61687046392973, lng: -95.373046875}, {lat: 37.61687046392973, lng: -92.373046875}, {lat: 32.61687046392973, lng: -98.373046875}, {lat: 39.757683799999995, lng: -105.00725729999999}];
 
@@ -40,19 +49,35 @@ navigator.geolocation.getCurrentPosition(success, error, options);
 
 var infowindow = new google.maps.InfoWindow();
 
-for(var i = 0; i < marks.length; i++){
-    var marker = new google.maps.Marker({
-position: marks[i],
-map: map,
-title: "lat: " + marks[i].lat.toString() + " " + "long: " + marks[i].lng.toString()
+var beeData = new Promise(function(resolve, reject) {
+  var allData = [];
+$.get("http://localhost:3000/beeseed", function(data) {
+  return data;
+}).then(function(data) {
+  var beeData = [];
+  data.forEach(function(data) {
+    beeData.push(data);
+    })
+
+    for(var i = 0; i < beeData.length; i++){
+      // console.log(beeData[i]["Image URL"])
+
+      var image = '<h5>'+ beeData[i].Species + '</h5>' + '<img src="' + beeData[i]["Image URL"]+'" width="100" height="100" />'
+      console.log(image)
+      var marker = new google.maps.Marker({
+        position: beeData[i].location,
+        map: map,
+        title: image
+      });
+
+
+    google.maps.event.addListener(marker, 'click', function() {
+                infowindow.setContent(this.title);
+                infowindow.open(map, this);
+            });
+    }
+  })
 });
-
-
-google.maps.event.addListener(marker, 'click', function() {
-            infowindow.setContent(this.title);
-            infowindow.open(map, this);
-        });
-}
 
 
 function placeMarker(position, map) {
