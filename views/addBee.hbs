@@ -29,8 +29,8 @@
         <label for="Location">Location:</label>
         <input type="text" name="latitude" placeholder="Latitude">
         <input type="text" name="longitude" placeholder="Longitude">
-
       </div>
+      <button type="submit" name="button">Add this Bee to my Map</button>
     </form>
   </div>
 </div>
@@ -52,7 +52,9 @@
   </div>
   <div class="col-md-3">
     {{!--Field for button to add THIS bee to peronal map--}}
-    <a href="/beeInfo"><button>This is the Bee I Saw</button></a>
+    <form action="/addBee" method="post">
+      <button type="submit">This is the Bee I Saw</button>
+    </form>
   </div>
   <div class="col-md-1">
     {{!--Placeholder to help center--}}

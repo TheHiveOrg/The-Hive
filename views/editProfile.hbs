@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-4">
+    {{!--Left side space filler--}}
+  </div>
+  <div class="col-md-4">
+    <h1>Edit Your Profile</h1>
+      <form action="/editProfile" method="post">
+        <div class="form-group">
+          <label for="firstName">First Name:</label>
+          <input type="text" name="firstName" value="">{{!--put handlbars and user firstname knex reference in value--}}
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name:</label>
+          <input type="text" name="lastName" value="">{{!--put handlbars and user lastname knex reference in value--}}
+        </div>
+        <div class="form-group">
+          <label for="imageUrl">Change your Image:</label>
+          <input type="url" name="imageUrl" value="">{{!--put handlbars and user image url knex reference in value--}}
+        </div>
+        <button type="submit">Save These Changes</button>
+      </form>
+  </div>
+  <div class="col-md-4">
+    {{!--Right side space filler--}}
+  </div>
+
+</div>
