@@ -14,7 +14,8 @@ var infowindow = new google.maps.InfoWindow();
 
 var beeData = new Promise(function(resolve, reject) {
   var allData = [];
-$.get("http://localhost:3000/beeseed", function(data) {
+  // http://localhost:3000/beeseed LOCALHOST URL
+$.get("http://the-hive-g25.herokuapp.com/beeseed", function(data) {
   return data;
 }).then(function(data) {
   var beeData = [];
