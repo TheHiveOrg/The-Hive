@@ -35,7 +35,23 @@
   </div>
 </div>
 
-<div class="row" id="prepopulatedBeeInfo">{{!--This row will need a FOR EACH in order to create new entry for each bee that is already in our database--}}
+<div class="row" id="prepopulatedBeeInfo">
+  <script type="text/javascript">
+    var prepopData = new Promise(function(resolve, reject){
+      var databaseResults = [];
+      $.get("http://localhost:3000/beeseed", function(data){
+        return data;
+      }).then(function(data){
+        var prepopData = [];
+        data.forEach(function(data){
+          prepopData.push(data);
+          $("#prepopulatedBeeInfo").append(prepopData);
+          console.log(prepopData);
+        })
+      })
+    })
+  </script>
+  {{!--This row will need a FOR EACH in order to create new entry for each bee that is already in our database--}}
   <div class="col-md-1">
     {{!--Placeholder to help center--}}
   </div>

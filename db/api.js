@@ -13,14 +13,6 @@ module.exports = {
       last_name: profileId.name.familyName,
       username: profileId.emails[0].value,
       avatar: profileId.photos[0].value,
-      google_id: profileId.id
-    })
-  }
-
-    return knex('user').insert({first_name: profileId.name.givenName,
-                                last_name: profileId.name.familyName,
-                                username: profileId.emails[0].value,
-                                avatar: profileId.photos[0].value,
-                                google_id: profileId.id})
+      google_id: profileId.id})
     }
 };

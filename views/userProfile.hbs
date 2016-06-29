@@ -11,9 +11,9 @@
       <div class="col-md-12 profileInfo">
         <h2>Profile Info</h2>
         <ul>
-          <li>{{username.first_name}} {{username.last_name}}</li>{{!--First name from user table, needs handlebars and knex--}}
-          <li>{{username.userAge}}</li>{{!--Age from user table, needs handlebars and knex--}}
-          <li>{{username.aboutMe}}</li>{{!--aboutMe from user table, needs handlebars and knex--}}
+          <li>{{username.first_name}} {{username.last_name}}</li>
+          <li>{{username.userAge}}</li>
+          <li>{{username.aboutMe}}</li>
         </ul>
         <a href="/editProfile"><button>Edit Profile</button></a>
       </div>
@@ -31,6 +31,9 @@
     <div class="row">{{!--Need to do a FOR EACH based off of bees added by the logged in user--}}
       <div class="col-md-12">
         <h2>Bee Feed</h2>
+        <script>
+
+        </script>
         <ul>
           <li><img src="/images/megachile_apicalis.jpg" alt="a pic here" class="beeFeedPost"/>Bee Post</li>
           <li><img src="/images/megachile_apicalis.jpg" alt="a pic here" class="beeFeedPost"/>Bee Post</li>
@@ -58,7 +61,7 @@
         <p></p>
       </div>
     </div>
-    <script>
+    <script type="text/javascript">
       var randomFact = new Promise(function(resolve, reject){
         $.get('../beefact', function(data){
           return data;
