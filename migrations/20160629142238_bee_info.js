@@ -6,7 +6,8 @@ exports.up = function(knex, Promise) {
     table.text('species');
     table.text('description');
     table.text('image');
-
+    table.float('lat');
+    table.float('lng');
   })
 };
 
