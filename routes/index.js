@@ -62,11 +62,11 @@ router.get('/editProfile', ensureAuthenticated, function(req, res, next) {
 });
 });
 router.get('/addBee', ensureAuthenticated, function(req, res, next) {
-    res.render('addBee', {
-        title: 'Add Bee',
-        user: req.user
-    });
-});
+  res.render('addBee', {
+      title: 'Add Bee',
+      user: req.user
+  });
+})
 router.get('/beeInfo', ensureAuthenticated, function(req, res, next) {
     res.render('beeInfo', {
         title: 'Bee Info',

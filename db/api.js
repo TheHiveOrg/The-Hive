@@ -1,3 +1,4 @@
+
 var knex = require('./knex');
 module.exports = {
     findUserById: function(profileId) {
