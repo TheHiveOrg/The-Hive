@@ -42,12 +42,16 @@ router.get('/auth/google/callback', auth.passport.authenticate('google', {
         response.redirect('/userProfile');
     });
 router.get('/userProfile', ensureAuthenticated, function(req, res, next) {
-    knex('users').select().where("google_id", req.user.id).then(function(data) {
-        res.render('userProfile', {
-            title: 'User Profile',
-            username: data[0],
-            user: req.user
-        });
+  return Promise.all([
+    knex('users').select().where("google_id", req.user.id),
+    knex('bee_info').select().join('users', 'user_id', '=', 'users.id').where('google_id', req.user.id)
+    ]).then(function(data) {
+    res.render('userProfile', {
+      username: data[0][0],
+      user: req.user,
+      beeData: data[1]
+    })
+
     });
 });
 router.get('/editProfile', ensureAuthenticated, function(req, res, next) {
