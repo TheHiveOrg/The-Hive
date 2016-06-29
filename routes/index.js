@@ -3,6 +3,7 @@ var router = express.Router();
 var db = require('../db/api');
 var auth = require('../auth');
 var beeseed = require('../beeseed');
+var beeFact = require('../beefact')
 var knex = require('../db/knex');
 
 function ensureAuthenticated(request, response, next) {
@@ -14,6 +15,9 @@ function ensureAuthenticated(request, response, next) {
 /* GET home page. */
 router.get('/beeseed', function(req, res) {
     res.json(beeseed);
+});
+router.get('/beefact', function(req, res){
+  res.json(beeFact);
 });
 router.get('/', function(req, res, next) {
     res.render('index', {
