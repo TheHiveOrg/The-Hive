@@ -46,14 +46,17 @@
         data.forEach(function(data){
           prepopData.push(data);
           for (var i=0; i<prepopData.length; i++){
-            $("#prepopulatedBeeInfo").append("<li>" + prepopData[i] + "</li>");
+            var databaseSpecies = prepopData[i].Species;
+            var databaseLocation = prepopData[i].location;
+            var databaseObservations = prepopData[i].Observations;
+            var databaseImage = prepopData[i]["Image URL"];
+            $("#prepopulatedBeeInfo").append(databaseSpecies, databaseLocation, databaseObservations, databaseImage);
             console.log(prepopData[i]);
           }
         })
       })
     })
   </script>
-  {{!--This row will need a FOR EACH in order to create new entry for each bee that is already in our database--}}
   <div class="col-md-1">
     {{!--Placeholder to help center--}}
   </div>
