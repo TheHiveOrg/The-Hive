@@ -8,6 +8,7 @@ module.exports = {
     });
   },
   createUser: function(profileId){
+  
     return knex('user').insert({first_name: profileId.name.givenName,
                                 last_name: profileId.name.familyName,
                                 username: profileId.emails[0].value,

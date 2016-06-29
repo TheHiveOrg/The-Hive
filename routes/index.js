@@ -50,7 +50,6 @@ router.get('/signOut', function(request, response, next) {
 });
 router.get('/userProfile', ensureAuthenticated, function(req, res, next) {
     knex('user').select().where("google_id", req.user.id).then(function(data) {
-      console.log(data)
         res.render('userProfile', {
             title: 'User Profile',
             username: data[0]
@@ -59,7 +58,6 @@ router.get('/userProfile', ensureAuthenticated, function(req, res, next) {
 });
 router.get('/editProfile', ensureAuthenticated, function(req, res, next) {
   knex('user').where("google_id", req.user.id).then(function(data){
-    console.log(data[0])
     res.render('editProfile', {
         data: data[0]
     });
@@ -86,8 +84,11 @@ router.post('/editProfile', ensureAuthenticated, function(req, res, next) {
     })
 });
 router.post('/addBee', ensureAuthenticated, function(req, res, next) {
-    res.render('addBee', {
-        title: 'Add Bee'
-    });
+  knex('user').select('user.id').where("google_id", req.user.id).then(function(data){
+    req.body.user_id = data[0].id;
+    knex('bee_info').insert(req.body).then(function(){
+      res.redirect('/beeMap')
+    })
+});
 });
 module.exports = router;
