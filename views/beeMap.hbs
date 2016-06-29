@@ -1,16 +1,24 @@
-
-    <div class="container">
+<div class="container">
     <div id="map"></div>
-  </div>
-
-
-
-
-
-
+</div>
 <script>
 
+var options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0
+};
 
+function success(pos) {
+  var crd = pos.coords;
+  myLoc = {lat: crd.latitude, lng: crd.longitude}
+};
+
+function error(err) {
+  console.warn('ERROR(' + err.code + '): ' + err.message);
+};
+
+navigator.geolocation.getCurrentPosition(success, error, options);
 
   var marks = [{lat: 38.61687046392973, lng: -95.373046875}, {lat: 37.61687046392973, lng: -92.373046875}, {lat: 32.61687046392973, lng: -98.373046875}, {lat: 39.757683799999995, lng: -105.00725729999999}];
 
@@ -35,20 +43,16 @@ $.get("http://localhost:3000/beeseed", function(data) {
     })
 
     for(var i = 0; i < beeData.length; i++){
-      // console.log(beeData[i]["Image URL"])
-
       var image = '<h5>'+ beeData[i].Species + '</h5>' + '<img src="' + beeData[i]["Image URL"]+'" width="100" height="100" />'
       var marker = new google.maps.Marker({
         position: beeData[i].location,
         map: map,
         title: image
       });
-
-
     google.maps.event.addListener(marker, 'click', function() {
-                infowindow.setContent(this.title);
-                infowindow.open(map, this);
-            });
+        infowindow.setContent(this.title);
+        infowindow.open(map, this);
+      });
     }
   })
 });
