@@ -17,6 +17,7 @@
           <label for="imageUrl">Change your Image:</label>
           <input type="url" name="avatar" value="{{data.avatar}}" required>{{!--put handlbars with knex and user image url knex reference in value--}}
         </div>
+
         <div class="form-group">
           <label for="aboutMe">About Me:</label>
           <textarea name="aboutMe" rows="8" cols="40" placeholder="Tell us about yourself" value="">{{data.aboutMe}}</textarea>{{!--put handlebars with knex and users aboutMe IF it exists into value="", remove placeholder--}}
