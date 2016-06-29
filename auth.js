@@ -12,7 +12,7 @@ passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
   callbackURL: 'http://the-hive-g25.herokuapp.com/auth/google/callback'
-},
+  },
 function(accessToken, refreshToken, profile, done){
    db.findUserById(profile.id).then(function(id){
      if(id){
