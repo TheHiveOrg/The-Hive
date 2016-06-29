@@ -26,9 +26,9 @@
         <input type="url" name="image" placeholder="Enter an image URL">{{!--Image URL to be added to database--}}
       </div>
       <div class="form-group">
-        <label for="Location">Location:</label>
-        <input type="text" name="latitude" placeholder="Latitude">{{!--If we grab lat and long from browser we can replace placeholder="" with value="" and fill that in with handle bars for req.params for each--}}
-        <input type="text" name="longitude" placeholder="Longitude">
+        <label for="Location">Location:</label><button type="button" id="locationBtn">Get Current Location</button>
+        <input type="text" name="latitude" placeholder="Latitude" id="locationFieldLat">{{!--If we grab lat and long from browser we can replace placeholder="" with value="" and fill that in with handle bars for req.params for each--}}
+        <input type="text" name="longitude" placeholder="Longitude" id="locationFieldLong">
       </div>
       <button type="submit" name="button">Add this Bee to my Map</button>{{!--This submit needs to take all the above information and create a new bee instance with it, possibly use it to append the entire page???--}}
     </form>
@@ -65,3 +65,29 @@
 
 
 <a href="/beeInfo"><button>Bee Info | Personal Map </button></a>
+
+<script>
+  $(document).ready(function() {
+    $("#locationBtn").on('click', function() {
+      var options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+      };
+
+      function success(pos) {
+        var crd = pos.coords;
+
+        myLoc = {lat: crd.latitude, lng: crd.longitude}
+        $('#locationFieldLat').val(myLoc.lat).val()
+        $('#locationFieldLong').val(myLoc.lng).val()
+      };
+
+      function error(err) {
+        console.warn('ERROR(' + err.code + '): ' + err.message);
+      };
+
+      navigator.geolocation.getCurrentPosition(success, error, options);
+    })
+  })
+</script>
