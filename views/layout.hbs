@@ -37,9 +37,10 @@
                   <li class="navButton"><a href="/beeMap">Bee Map</a></li>
                   <li class="navButton"><a href="/editProfile">Edit My Info</a></li>
                   {{#if user}}
-                  <li class="navButton"><a href="/signOut">Sign Out</a></li>
+                  <li class="navButton"><a href="/logout">Sign Out</a></li>
                   {{else}}
-                  <li class="navButton"><a href='/auth/google'><button>Login with Google</button></a></li>
+                  <li class="navButton"><a href='/auth/google'>Sign up</a></li>
+                  <li class="navButton"><a href='/auth/google'>Login with Google</a></li>
                   {{/if}}
                 </ul>
               </div>
