@@ -55,12 +55,23 @@
         <img src="/images/megachile_apicalis.jpg" alt="Image for bee fact of the day" id="beeFact"/>
       </div>
     </div>
+    <script>
+      var randomFact = new Promise(function(resolve, reject){
+        $.get('../beefact', function(data){
+          return data;
+        }).then(function(data){
+          for (var i=0; i<beeFact.length; i++){
+            var fact = data[i];
+            // h4, img, p
+          }
+        })
+      })
+    </script>
     <div class="row">
       <div class="col-md-12">
-        <h4>The hard facts!</h4>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+        <h4></h4>
+        <img src={{data[0].}}>
+        <p></p>
       </div>
     </div>
 
