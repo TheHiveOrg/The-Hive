@@ -45,8 +45,10 @@
         var prepopData = [];
         data.forEach(function(data){
           prepopData.push(data);
-          $("#prepopulatedBeeInfo").append(prepopData);
-          console.log(prepopData);
+          for (var i=0; i<prepopData.length; i++){
+            $("#prepopulatedBeeInfo").append("<li>" + prepopData[i] + "</li>");
+            console.log(prepopData[i]);
+          }
         })
       })
     })
