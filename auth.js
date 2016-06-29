@@ -11,7 +11,7 @@ passport.deserializeUser(function(obj, done){
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: 'http://127.0.0.1:3000/auth/google/callback'
+  callbackURL: 'http://the-hive-g25.herokuapp.com/auth/google/callback'
 },
 function(accessToken, refreshToken, profile, done){
    db.findUserById(profile.id).then(function(id){
