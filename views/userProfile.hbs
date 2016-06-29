@@ -30,12 +30,14 @@
     <div class="row">{{!--Need to do a FOR EACH based off of bees added by the logged in user--}}
       <div class="col-md-12">
         <h2>Bee's that I've Seen</h2>
+        {{#each beeData}}
         <ul>
-          <li><img src="/images/megachile_apicalis.jpg" alt="a pic here" class="beeFeedPost"/>Bee Post</li>
-          <li><img src="/images/megachile_apicalis.jpg" alt="a pic here" class="beeFeedPost"/>Bee Post</li>
-          <li><img src="/images/megachile_apicalis.jpg" alt="a pic here" class="beeFeedPost"/>Bee Post</li>
-          <li><img src="/images/megachile_apicalis.jpg" alt="a pic here" class="beeFeedPost"/>Bee Post</li>
+          <li><img src="{{this.image}}" width='100' height='100'/></li>
+          <li>{{this.genus}}</li>
+          <li>{{this.species}}</li>
+          <li>{{this.description}}</li>
         </ul>
+        {{/each}}
       </div>
 
     </div>
