@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-md-12">
 
-        <img src="/images/megachile_apicalis.jpg" alt="User image/avatar" id="avatarPic"/>{{!--User image URL from user table, needs handlebars and knex--}}
+        <img src={{username.avatar}} alt="User image/avatar" id="avatarPic"/>{{!--User image URL from user table, needs handlebars and knex--}}
       </div>
 
     </div>
@@ -14,8 +14,10 @@
         <ul>
           <li>{{username.first_name}}</li>{{!--First name from user table, needs handlebars and knex--}}
           <li>{{username.last_name}}</li>{{!--Last name from user table, needs handlebars and knex--}}
-          <li>Age</li>{{!--Age from user table, needs handlebars and knex--}}
-          <li>About Me</li>{{!--aboutMe from user table, needs handlebars and knex--}}
+
+          <li>{{username.userAge}}</li>{{!--Age from user table, needs handlebars and knex--}}
+          <li>{{username.aboutMe}}</li>{{!--aboutMe from user table, needs handlebars and knex--}}
+
         </ul>
         <a href="/editProfile"><button>Edit Profile</button></a>
       </div>

@@ -3,16 +3,21 @@ var router = express.Router();
 var db = require('../db/api');
 var auth = require('../auth');
 var beeseed = require('../beeseed');
-var knex = require('../db/knex')
-function ensureAuthenticated(request, response, next){
-  if(request.isAuthenticated()){
-    return next();
-  }
-  response.redirect('/auth/google');
+var beeFact = require('../beefact')
+var knex = require('../db/knex');
+
+function ensureAuthenticated(request, response, next) {
+    if (request.isAuthenticated()) {
+        return next();
+    }
+    response.redirect('/auth/google');
 }
 /* GET home page. */
 router.get('/beeseed', function(req, res) {
     res.json(beeseed);
+});
+router.get('/beefact', function(req, res){
+  res.json(beeFact);
 });
 router.get('/', function(req, res, next) {
     res.render('index', {
@@ -44,23 +49,28 @@ router.get('/signOut', function(request, response, next) {
     response.redirect('/');
 });
 router.get('/userProfile', ensureAuthenticated, function(req, res, next) {
-  knex('user').select().where("google_id", req.user.id).then(function(data){
-    res.render('userProfile', {
-        title: 'User Profile', username: data[0]
+    knex('user').select().where("google_id", req.user.id).then(function(data) {
+      console.log(data)
+        res.render('userProfile', {
+            title: 'User Profile',
+            username: data[0]
+        });
+    })
+});
+router.get('/editProfile', ensureAuthenticated, function(req, res, next) {
+  knex('user').where("google_id", req.user.id).then(function(data){
+    console.log(data[0])
+    res.render('editProfile', {
+        data: data[0]
     });
   })
 });
-router.get('/editProfile',ensureAuthenticated, function(req, res, next) {
-    res.render('editProfile', {
-        title: 'Edit Profile'
-    });
-});
-router.get('/addBee', ensureAuthenticated,function(req, res, next) {
+router.get('/addBee', ensureAuthenticated, function(req, res, next) {
     res.render('addBee', {
         title: 'Add Bee'
     });
 });
-router.get('/beeInfo',ensureAuthenticated, function(req, res, next) {
+router.get('/beeInfo', ensureAuthenticated, function(req, res, next) {
     res.render('beeInfo', {
         title: 'Bee Info'
     });
@@ -70,12 +80,12 @@ router.get('/beeMap', function(req, res, next) {
         title: 'Bee Map'
     });
 });
-router.post('/editProfile',ensureAuthenticated,  function(req, res, next) {
-    res.render('editProfile', {
-        title: 'Edit Profile'
-    });
+router.post('/editProfile', ensureAuthenticated, function(req, res, next) {
+    knex('user').where("google_id", req.user.id).update(req.body).then(function(data){
+    res.redirect('userProfile');
+    })
 });
-router.post('/addBee',ensureAuthenticated, function(req, res, next) {
+router.post('/addBee', ensureAuthenticated, function(req, res, next) {
     res.render('addBee', {
         title: 'Add Bee'
     });
