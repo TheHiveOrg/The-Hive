@@ -13,8 +13,13 @@ passport.use(new GoogleStrategy({
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
 
   callbackURL: 'http://localhost:3000/auth/google/callback'
+<<<<<<< HEAD
 
 },
+=======
+  },
+
+>>>>>>> b2c8eebb33fb6e15a7d21fff718ecbe7c61ffdd6
 function(accessToken, refreshToken, profile, done){
    db.findUserById(profile.id).then(function(id){
      if(id){

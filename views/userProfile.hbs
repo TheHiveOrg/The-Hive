@@ -11,11 +11,16 @@
     <div class="row">
       <div class="col-md-12 profileInfo">
         <h2>Profile Info</h2>
+<<<<<<< HEAD
         <ul>
 
           <li>{{username.first_name}} {{username.last_name}}</li>{{!--First name from user table, needs handlebars and knex--}}
 
           <li>{{username.userAge}}</li>{{!--Age from user table, needs handlebars and knex--}}
+=======
+        <ul class="list-unstyled">
+          <li>{{username.first_name}} {{username.last_name}}</li>{{!--First name from user table, needs handlebars and knex--}}
+>>>>>>> b2c8eebb33fb6e15a7d21fff718ecbe7c61ffdd6
           <li>{{username.aboutMe}}</li>{{!--aboutMe from user table, needs handlebars and knex--}}
 
         </ul>
@@ -34,7 +39,7 @@
     {{!--Middle section with bee feed, needs to prepend for added bees--}}
     <div class="row">{{!--Need to do a FOR EACH based off of bees added by the logged in user--}}
       <div class="col-md-12">
-        <h2>Bee Feed</h2>
+        <h2>Bee's that I've Seen</h2>
         <ul>
           <li><img src="/images/megachile_apicalis.jpg" alt="a pic here" class="beeFeedPost"/>Bee Post</li>
           <li><img src="/images/megachile_apicalis.jpg" alt="a pic here" class="beeFeedPost"/>Bee Post</li>
@@ -46,26 +51,42 @@
     </div>
   </div>
 
-  <div class="col-md-4 beeFacts">{{!--Randomly choose a fact from a series of facts??--}}
-    {{!--Righthand section with bee fact of the day--}}
+  <div class="col-md-4 beeFacts col-xs-10">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-xs-1"></div>
+      <div class="col-xs-10">
         <h3>Bee Fact of the Day</h3>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <img src="/images/megachile_apicalis.jpg" alt="Image for bee fact of the day" id="beeFact"/>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <h4>The hard facts!</h4>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-      </div>
+      <div class="col-xs-1"></div>
     </div>
 
+    <div class="row" id="beeFact">
+      <div class="col-md-2 col-xs-2"></div>
+      <div class="col-md-10 col-xs-10">
+        <img/>
+        <p></p>
+      </div>
+    </div>
+    <script>
+      var randomFact = new Promise(function(resolve, reject){
+        $.get('../beefact', function(data){
+          return data;
+        }).then(function(data){
+          var factArray = [];
+          data.forEach(function(data){
+            factArray.push(data);
+          })
+          var randomized = factArray[Math.floor(Math.random() * factArray.length)];
+          var factHeading = '<h4>'+ randomized.heading + '</h4>';
+          var factImage = '<img id="factId" width="90%" src="' + randomized.image + '"/>';
+          var factText = '<p>' + randomized.fact + '</p>';
+          $("#beeFact").append(factHeading, factImage, factText);
+        })
+      })
+    </script>
+    <div class="row">
+      <div class="col-md-12">
+      </div>
+    </div>
 </div>
 </div>
