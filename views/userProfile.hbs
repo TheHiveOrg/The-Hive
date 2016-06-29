@@ -42,40 +42,36 @@
     </div>
   </div>
 
-  <div class="col-md-4 beeFacts">
+  <div class="col-md-4 beeFacts col-xs-10">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-xs-1"></div>
+      <div class="col-xs-10">
         <h3>Bee Fact of the Day</h3>
       </div>
+      <div class="col-xs-1"></div>
     </div>
+
     <div class="row" id="beeFact">
-      <div class="col-md-12">
-        <img src="/images/megachile_apicalis.jpg" alt="Image for bee fact of the day" id="beeFactImage"/>
+      <div class="col-md-2 col-xs-2"></div>
+      <div class="col-md-10 col-xs-10">
+        <img/>
         <p></p>
       </div>
     </div>
     <script>
-      console.log("entrance")
       var randomFact = new Promise(function(resolve, reject){
         $.get('../beefact', function(data){
-          console.log("you did something")
           return data;
         }).then(function(data){
-          console.log("you did something2")
           var factArray = [];
           data.forEach(function(data){
             factArray.push(data);
-            console.log("you did something3")
           })
           var randomized = factArray[Math.floor(Math.random() * factArray.length)];
-          console.log(randomized);
-          for (var i=0; i<randomized.length; i++){
-            var factHeading = '<h4>'+ randomized[i].heading + '</h4>';
-            var factImage = '<img src="' randomized[i].image + '/>';
-            var factText = '<p>' + randomized[i].fact + '</p>';
-            $("#beeFact").append(factHeading);
-            console.log("you did something")
-          }
+          var factHeading = '<h4>'+ randomized.heading + '</h4>';
+          var factImage = '<img id="factId" width="90%" src="' + randomized.image + '"/>';
+          var factText = '<p>' + randomized.fact + '</p>';
+          $("#beeFact").append(factHeading, factImage, factText);
         })
       })
     </script>
