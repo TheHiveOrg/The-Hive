@@ -49,7 +49,7 @@ router.get('/signOut', function(request, response, next) {
     response.redirect('/');
 });
 router.get('/userProfile', ensureAuthenticated, function(req, res, next) {
-    knex('user').select().where("google_id", req.user.id).then(function(data) {
+    knex('users').select().where("google_id", req.user.id).then(function(data) {
         res.render('userProfile', {
             title: 'User Profile',
             username: data[0]
@@ -57,7 +57,7 @@ router.get('/userProfile', ensureAuthenticated, function(req, res, next) {
     })
 });
 router.get('/editProfile', ensureAuthenticated, function(req, res, next) {
-  knex('user').where("google_id", req.user.id).then(function(data){
+  knex('users').where("google_id", req.user.id).then(function(data){
     res.render('editProfile', {
         data: data[0]
     });
@@ -79,12 +79,12 @@ router.get('/beeMap', function(req, res, next) {
     });
 });
 router.post('/editProfile', ensureAuthenticated, function(req, res, next) {
-    knex('user').where("google_id", req.user.id).update(req.body).then(function(data){
+    knex('users').where("google_id", req.user.id).update(req.body).then(function(data){
     res.redirect('userProfile');
     })
 });
 router.post('/addBee', ensureAuthenticated, function(req, res, next) {
-  knex('user').select('user.id').where("google_id", req.user.id).then(function(data){
+  knex('users').select('users.id').where("google_id", req.user.id).then(function(data){
     req.body.user_id = data[0].id;
     knex('bee_info').insert(req.body).then(function(){
       res.redirect('/beeMap')
