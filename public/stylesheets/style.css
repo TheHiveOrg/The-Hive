@@ -63,7 +63,8 @@ footer {
 
 #hiveIcon {
   position: absolute;
-  right: 0;
-  top: 0; }
+  right: 25px;
+  top: 0;
+  width: 60px; }
 
 /*# sourceMappingURL=style.css.map */
