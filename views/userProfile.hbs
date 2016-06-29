@@ -10,9 +10,8 @@
     <div class="row">
       <div class="col-md-12 profileInfo">
         <h2>Profile Info</h2>
-        <ul>
+        <ul class="list-unstyled">
           <li>{{username.first_name}} {{username.last_name}}</li>{{!--First name from user table, needs handlebars and knex--}}
-          <li>{{username.userAge}}</li>{{!--Age from user table, needs handlebars and knex--}}
           <li>{{username.aboutMe}}</li>{{!--aboutMe from user table, needs handlebars and knex--}}
         </ul>
         <a href="/editProfile"><button>Edit Profile</button></a>
@@ -30,7 +29,7 @@
     {{!--Middle section with bee feed, needs to prepend for added bees--}}
     <div class="row">{{!--Need to do a FOR EACH based off of bees added by the logged in user--}}
       <div class="col-md-12">
-        <h2>Bee Feed</h2>
+        <h2>Bee's that I've Seen</h2>
         <ul>
           <li><img src="/images/megachile_apicalis.jpg" alt="a pic here" class="beeFeedPost"/>Bee Post</li>
           <li><img src="/images/megachile_apicalis.jpg" alt="a pic here" class="beeFeedPost"/>Bee Post</li>
