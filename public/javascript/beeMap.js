@@ -1,15 +1,21 @@
 var map;
 var markers = [];
-
+var filterButton = $("input[type='button']");
+function clearOverlays() {
+  for (var i = 0; i < markers.length; i++ ) {
+    markers[i].setMap(null);
+  }
+  markers.length = 0;
+}
 function addPins(data){
-  var infowindow = new google.maps.InfoWindow();
+    var infowindow = new google.maps.InfoWindow();
     var beeData = [];
     data.forEach(function(data) {
         beeData.push(data);
     })
 
-    for(var i = 0; i < beeData.length; i++){
-      var image = '<h5>'+ beeData[i].species + '</h5>' + '<img src="' + beeData[i].image +'" width="100" height="100" />'
+for(var i = 0; i < beeData.length; i++){
+      var image = '<h5>'+ beeData[i].species + '</h5>' + '<img src="' + beeData[i].image +'" width="100" height="100" />' + '<a href="#"><p>' + beeData[i].username + '</p></a>'
       var marker = new google.maps.Marker({
           position: {lat: beeData[i].lat, lng: beeData[i].lng} ,
           map: map,
@@ -22,21 +28,19 @@ function addPins(data){
     });
   }
 }
-
 function initMap() {
-  var filterButton = $("input[type='button']");
+
+
+  $.get("http://localhost:3000/beeseed", function(data) {
+    addPins(data)
+  });
 
   map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 37.0902, lng: -95.7129},
-      zoom: 4
+      zoom: 6
 });
 
-function clearOverlays() {
-  for (var i = 0; i < markers.length; i++ ) {
-    markers[i].setMap(null);
-  }
-  markers.length = 0;
-}
+
 
 function placeMarker(position, map) {
   var marker = new google.maps.Marker({
@@ -45,9 +49,41 @@ function placeMarker(position, map) {
   });
     marks.push(marker);
     map.panTo(position);
+  }
 }
 
-$(filterButton).click(function() {
+
+if(navigator.geolocation) {
+  var myOptions = {
+    zoom: 8,
+  };
+  browserSupportFlag = true;
+  navigator.geolocation.getCurrentPosition(function(position) {
+    initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+    map.setCenter(initialLocation);
+  }, function() {
+    handleNoGeolocation(browserSupportFlag);
+  });
+}
+// Browser doesn't support Geolocation
+else {
+  browserSupportFlag = false;
+  handleNoGeolocation(browserSupportFlag);
+}
+
+function handleNoGeolocation(errorFlag) {
+  if (errorFlag == true) {
+    alert("Geolocation service failed.");
+    initialLocation = newyork;
+  } else {
+    alert("Your browser doesn't support geolocation. We've placed you in Siberia.");
+    initialLocation = siberia;
+  }
+  map.setCenter(initialLocation);
+}
+
+$(document).ready(function() {
+$("input[type='button']").click(function() {
     switch(this.id) {
       case 'all': var Data = $.get("http://localhost:3000/beeseed");
       break;
@@ -59,8 +95,6 @@ $(filterButton).click(function() {
       addPins(data)
     })
   });
-}
 
-$.get("http://localhost:3000/beeseed", function(data) {
-  addPins(data)
-});
+
+})
