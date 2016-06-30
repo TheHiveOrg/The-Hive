@@ -37,8 +37,10 @@
               <a class="navbar-brand" href="/"><img id="hiveIcon" src="/images/the-hive.png" alt="Our Icon"/></a>
               <div class="collapse navbar-collapse" id="hiveNav">
                 <ul class="nav navbar-nav">
+                  {{#if user}}
                   <li id="homeButton" class="navButton"><a href="/userProfile">Home</a></li>
                   <li class="navButton"><a href="/editProfile">Edit My Info</a></li>
+                  {{/if}}
                   <li class="navButton"><a href="/beeMap">Bee Map</a></li>
                   {{#if user}}
                   <li class="navButton"><a href="/logout">Sign Out</a></li>
@@ -57,12 +59,10 @@
         </main>
         <footer>
           <div class="row">
-            <div class="col-md-2 col-xs-9">
-              <img src="http://www.ucarecdn.com/0936c5ab-f3d0-4ab6-830a-a7347e160812/-/preview/300x300/" alt="American Museum of Natural History" />
+            <div class="col-md-3 col-xs-9">
+              <img id="footerImage" src="http://www.ucarecdn.com/0936c5ab-f3d0-4ab6-830a-a7347e160812/-/preview/300x300/" alt="American Museum of Natural History" />
             </div>
-            <div class="col-md-8 col-xs-0">
-            </div>
-            <div class="col-md-2 col-xs-3">
+            <div class="col-md-2 col-md-offset-7 col-xs-3">
               <a href="/aboutUs">About Us</a>
             </div>
           </div>
