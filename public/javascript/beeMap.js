@@ -15,7 +15,7 @@ function addPins(data){
     })
 
 for(var i = 0; i < beeData.length; i++){
-      var image = '<h5>'+ beeData[i].species + '</h5>' + '<img src="' + beeData[i].image +'" width="100" height="100" />' + '<a href="#"><p>' + beeData[i].username + '</p></a>'
+      var image = '<h5>'+ beeData[i].species + '</h5>' + '<img src="' + beeData[i].image +'" width="100" height="100" />' + '<a href=""><p>' + beeData[i].username + '</p></a>'
       var marker = new google.maps.Marker({
           position: {lat: beeData[i].lat, lng: beeData[i].lng} ,
           map: map,
