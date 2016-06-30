@@ -15,16 +15,15 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  overflow: hidden; }
+  overflow: hidden;
+  z-index: 3; }
 
 .headerRow {
   height: 5vw; }
 
-#homeButton {
-  margin-left: 85px; }
-
 .navbar-nav {
-  margin-top: 1vw; }
+  margin-top: 1vw;
+  margin-left: 10vw; }
 
 main {
   position: fixed;
@@ -34,7 +33,9 @@ main {
   right: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  margin: 2em; }
+  margin: 2em;
+  padding-right: 17px;
+  z-index: 1; }
 
 footer {
   position: absolute;
@@ -78,10 +79,14 @@ footer {
   position: absolute;
   top: 0;
   height: 7rem;
-  margin-right: 10px; }
+  margin-right: 10px;
+  z-index: 2; }
 
 #avatarPic {
   max-width: 90%;
   max-height: 15%; }
+
+#footerImage {
+  width: 90%; }
 
 /*# sourceMappingURL=style.css.map */
