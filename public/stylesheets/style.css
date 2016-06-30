@@ -64,6 +64,10 @@ footer {
 #addABee {
   margin: 10px; }
 
+.databaseBees {
+  margin: 0.25em;
+  border: 0.5px solid black; }
+
 .container {
   width: 100%;
   height: 95%; }

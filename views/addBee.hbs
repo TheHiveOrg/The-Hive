@@ -1,6 +1,6 @@
 <div class="row dropdown" id="customBee">
   <div class="col-md-4">
-    <button type="button" name="addABee" id="addABee">Add Your Own Bee</button>
+    <h2><button type="button" name="addABee" id="addABee">Click Here to Add Your Own Bee</button></h2>
     <script type="text/javascript">
         $(document).ready(function(){
           $("#addABee").on('click', function(){
@@ -31,52 +31,27 @@
         <input type="hidden" name="lng" placeholder="Longitude" class="locationFieldLong">
 
       </div>
-      <button type="submit" name="">update bee info </button>{{!--This submit needs to take all the above information and create a new bee instance with it, possibly use it to append the entire page???--}}
+      <button type="submit" name="">Add Your Custom Bee</button>{{!--This submit needs to take all the above information and create a new bee instance with it, possibly use it to append the entire page???--}}
     </form>
   </div>
 </div>
-
+<h3>...Or Pick From the List:</h3>
 <div class="row" id="prepopulatedBeeInfo">
-  <div class="col-md-1">
-    {{!--Placeholder to help center--}}
-  </div>
-
   <form action="/addBee" method="post">
-  <div class="col-md-3">
-
-  </div>
-  <div class="col-md-4">
-<script>
-    var prepopData = new Promise(function(resolve, reject){
-      $.get("https://the-hive-g25.herokuapp.com/beeseed", function(data){
-        return data;
-      }).then(function(data){
-          for (var i=0; i<data.length; i++){
-            $("#prepopulatedBeeInfo").append('<img src="'+ data[i].image + '"width="200" height="200" /> <form action="/addBee"  method="post"> <input type="text" name="genus" value='+ data[i].genus+'> <input type="text" name="species" value='+ data[i].species+'> <input type="hidden" name="image" value='+ data[i].image+'> <textarea type="text" name="description" placeholder= example:'+ data[i].Observations+'></textarea><input type="hidden" name="lat" placeholder="Latitude" class="locationFieldLat"><input type="hidden" name="lng" placeholder="Longitude" class="locationFieldLong"><button  type="submit" name="">update bee info </button></form>');
-          }
-        })
-    });
-
-    // $.get("https://the-hive-g25.herokuapp.com/beeseed", function(data){
-    //   splitBees = neighborhoods.reduce((result,item, i) => {
-    //             var index = Math.floor(i/4)
-    //             result[index] = result[index] || []
-    //             result[index].push(item)
-    //             return result
-    //         }, [])
-    // })
-
-
-    </script>
-  </div>
-  <div class="col-md-3">
-    {{!--Field for button to add THIS bee to peronal map--}}
-
-  </div>
+    {{#each splitBees}}
+      <div class="row">
+        <div class="col-md-2"></div>
+        {{#each this}}
+          <div class="col-md-2 databaseBees">
+            <div ><img src="{{this.image}}" width="100px" height="100px"/></div>
+            <div>{{this.genus}}</div>
+            <div>{{this.species}}</div>
+            <div><button type="submit" name="">This is the Bee I Saw</button></div>
+          </div>
+        {{/each}}
+      </div>
+    {{/each}}
   </form>
-  <div class="col-md-1">
-    {{!--Placeholder to help center--}}
-  </div>
 </div>
 
 <script>
@@ -102,4 +77,3 @@ function handleNoGeolocation(errorFlag) {
   }
 }
 </script>
-Status API Training Shop Blog About
