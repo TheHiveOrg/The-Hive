@@ -1,16 +1,21 @@
 body {
   padding: 10px 0px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  width: 100%; }
 
 a {
   color: #00B7FF; }
+
+button {
+  background: none;
+  border-style: none; }
 
 header {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  overflow: auto; }
+  overflow: hidden; }
 
 .headerRow {
   height: 5vw; }
@@ -27,7 +32,8 @@ main {
   left: 0;
   bottom: 50px;
   right: 0;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   margin: 2em; }
 
 footer {
@@ -37,16 +43,14 @@ footer {
   left: 0;
   padding: 1em;
   background-color: #efefef;
-  text-align: center; }
+  text-align: center;
+  overflow: hidden; }
 
 .beeFeedPost {
   width: 10vw;
   margin: 10px; }
 
 .profileInfo {
-  border-style: solid;
-  border-color: black;
-  border-width: 1px;
   margin: 10px;
   padding: 0 0 10px 10px; }
 

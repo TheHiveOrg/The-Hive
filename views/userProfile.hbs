@@ -1,8 +1,9 @@
 <div class="row">
-  <div class="col-md-4 userInfo">
+  <div class="col-md-3 userInfo">
     {{!--Lefthand section with userinfo and avatar image--}}
     <div class="row">
       <div class="col-md-12">
+
         <img src={{username.avatar}} alt="User image/avatar" id="avatarPic"/>{{!--User image URL from user table, needs handlebars and knex--}}
       </div>
 
@@ -15,11 +16,6 @@
           <li>{{username.aboutMe}}</li>{{!--aboutMe from user table, needs handlebars and knex--}}
         </ul>
         <a href="/editProfile"><button>Edit Profile</button></a>
-      </div>
-
-    </div>
-    <div class="row">
-      <div class="col-md-12">
         <a href="/addBee"><button>Add Bee</button></a>
       </div>
     </div>
@@ -30,14 +26,22 @@
     <div class="row">{{!--Need to do a FOR EACH based off of bees added by the logged in user--}}
       <div class="col-md-12">
         <h2>Bee's that I've Seen</h2>
+          <ul class="list-unstyled">
         {{#each beeData}}
-        <ul>
-          <li><img src="{{this.image}}" width='100' height='100'/></li>
+          <li>
+            <img src="{{this.image}}" width='100' height='100'/>
+          </li>
           <li>{{this.genus}}</li>
           <li>{{this.species}}</li>
           <li>{{this.description}}</li>
-        </ul>
+          <li>
+            <a href="/{{this.bee_info_id}}/delete"><button>Delete</button></a>
+            <a href="/{{this.bee_info_id}}/edit_beeInfo"><button>Edit Bee Info</button></a>
+          </li>
         {{/each}}
+        </ul>
+
+
       </div>
 
     </div>
