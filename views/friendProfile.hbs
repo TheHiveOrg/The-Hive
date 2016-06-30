@@ -15,9 +15,6 @@
           <li>{{username.aboutMe}}</li>{{!--aboutMe from user table, needs handlebars and knex--}}
         </ul>
 
-        <a href="/editProfile"><button>Edit Profile</button></a>
-        <a href="/addBee"><button>Add Bee</button></a>
-
       </div>
     </div>
   </div>
@@ -35,12 +32,6 @@
           <li>{{this.genus}}</li>
           <li>{{this.species}}</li>
           <li>{{this.description}}</li>
-          <li>
-            <a href="/{{this.bee_info_id}}/delete"><button>Delete</button></a>
-            <a href="/{{this.bee_info_id}}/edit_beeInfo"><button>Edit Bee Info</button></a>
-
-
-          </li>
         {{/each}}
         </ul>
 

@@ -22,7 +22,7 @@ router.get('/mapData', function(req, res) {
 });
 
 router.get('/userData', function(req, res) {
-  knex('bee_info').select('bee_info.species', 'bee_info.image', 'users.username', 'bee_info.lat', 'bee_info.lng').join('users', 'bee_info.user_id', 'users.id').then(function(data) {
+  knex('bee_info').select('bee_info.species', 'bee_info.image', 'users.first_name','users.last_name', 'bee_info.lat', 'bee_info.lng', 'users.id').join('users', 'bee_info.user_id', 'users.id').then(function(data) {
     res.json(data);
   })
 });
@@ -74,17 +74,20 @@ router.get('/userProfile', ensureAuthenticated, function(req, res, next) {
     });
   });
 });
-router.get('/userProfile/:id', ensureAuthenticated, function(req, res, next) {
+router.get('/friendProfile/:id', ensureAuthenticated, function(req, res, next) {
+   var userSession = req.user;
   return Promise.all([
-    knex('users').select('users.id as users_id', '*').where("google_id", req.user.id),
+    knex('users').select('users.id as users_id', '*').where('users.id', req.params.id),
     knex('bee_info').select('bee_info.id as bee_info_id' , '*').join('users', 'user_id', '=', 'users.id').where('google_id', req.user.id)
-    ]).then(function(data) {
-      // console.log(data[1]);
-    res.render('userProfile', {
+  ]).then(function(data) {
+      console.log(data[0][0].id);
+    res.render('friendProfile', {
       username: data[0][0],
       user: req.user,
       beeData: data[1]
     });
+  }).catch(function(err){
+    console.log(err);
   });
 });
 

@@ -12,17 +12,18 @@ function addPins(data){
     var beeData = [];
     data.forEach(function(data) {
         beeData.push(data);
-    })
+    });
 
 for(var i = 0; i < beeData.length; i++){
-      var image = '<h5>'+ beeData[i].species + '</h5>' + '<img src="' + beeData[i].image +'" width="100" height="100" />' + '<a href=""><p>' + beeData[i].username + '</p></a>'
+  console.log(beeData[i]);
+      var image = '<h5>'+ beeData[i].species + '</h5>' + '<img src="' + beeData[i].image +'" width="100" height="100" />' + '<a href="/friendProfile/' + beeData[i].id +'"><p>' + beeData[i].first_name +' '+ beeData[i].last_name + '</p></a>'
       var marker = new google.maps.Marker({
           position: {lat: beeData[i].lat, lng: beeData[i].lng} ,
           map: map,
           title: image
       });
       markers.push(marker);
-      google.maps.event.addListener(marker, 'click', function() {
+      google.maps.event.addListener(marker, 'click',function() {
           infowindow.setContent(this.title);
           infowindow.open(map, this);
     });
@@ -32,7 +33,7 @@ function initMap() {
 
 
   $.get("http://localhost:3000/userData", function(data) {
-    addPins(data)
+    addPins(data);
   });
 
   map = new google.maps.Map(document.getElementById('map'), {
@@ -70,7 +71,7 @@ else {
 }
 
 function handleNoGeolocation(errorFlag) {
-  if (errorFlag == true) {
+  if (errorFlag === true) {
     alert("Geolocation service failed.");
     initialLocation = newyork;
   } else {
@@ -89,10 +90,10 @@ $("input[type='button']").click(function() {
       break;
     }
     Data.then(function(data) {
-      clearOverlays()
-      addPins(data)
-    })
+      clearOverlays();
+      addPins(data);
+    });
   });
 
 
-})
+});
