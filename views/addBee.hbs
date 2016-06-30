@@ -30,7 +30,7 @@
         <input type="float" name="lat" placeholder="Latitude" id="locationFieldLat">{{!--If we grab lat and long from browser we can replace placeholder="" with value="" and fill that in with handle bars for req.params for each--}}
         <input type="float" name="lng" placeholder="Longitude" id="locationFieldLong">
       </div>
-      <button type="submit" name="">Add this Bee to my Map</button>{{!--This submit needs to take all the above information and create a new bee instance with it, possibly use it to append the entire page???--}}
+      <button type="submit" name="">update bee info </button>{{!--This submit needs to take all the above information and create a new bee instance with it, possibly use it to append the entire page???--}}
     </form>
   </div>
 </div>
@@ -53,7 +53,7 @@
       }).then(function(data){
           for (var i=0; i<data.length; i++){
             console.log(data[i].location)
-            $("#prepopulatedBeeInfo").append('<li>' + data[i].Species + '</li>' + '<li>' + data[i].Observations + '</li>' + '<img src="' + data[i]["Image URL"] + '" width="100" height="100"/>' +       '<button type="submit" class="seenBee">This is the Bee I Saw</button>');
+            $("#prepopulatedBeeInfo").append('<li>' + data[i].species + '</li>' + '<li>' + data[i].Observations + '</li>' + '<img src="' + data[i].image + '" width="100" height="100"/>' +       '<button type="submit" class="seenBee">This is the Bee I Saw</button>');
           }
         })
     });
