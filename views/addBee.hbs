@@ -25,12 +25,19 @@
         <label for="image">Bee Image:</label>
         <input type="url" name="image" placeholder="Enter an image URL">{{!--Image URL to be added to database--}}
       </div>
+<<<<<<< HEAD
         <label for="Location">Location:</label><button type="button" id="locationBtn">Get Current Location</button>
       <div class="form-group">
         <input type="float" name="lat" placeholder="Latitude" id="locationFieldLat">{{!--If we grab lat and long from browser we can replace placeholder="" with value="" and fill that in with handle bars for req.params for each--}}
       </div>
       <div class="form-group">
         <input type="float" name="lng" placeholder="Longitude" id="locationFieldLong">
+=======
+      <div class="form-group">
+        <label for="Location">Location:</label>
+        <input type="hidden" name="lat" placeholder="Latitude" class="locationFieldLat">{{!--If we grab lat and long from browser we can replace placeholder="" with value="" and fill that in with handle bars for req.params for each--}}
+        <input type="hidden" name="lng" placeholder="Longitude" class="locationFieldLong">
+>>>>>>> beedata
       </div>
       <button type="submit" name="">update bee info </button>{{!--This submit needs to take all the above information and create a new bee instance with it, possibly use it to append the entire page???--}}
     </form>
@@ -53,17 +60,18 @@
       $.get("http://localhost:3000/beeseed", function(data){
         return data;
       }).then(function(data){
+        console.log(data)
           for (var i=0; i<data.length; i++){
-            console.log(data[i].location)
-            $("#prepopulatedBeeInfo").append('<li>' + data[i].species + '</li>' + '<li>' + data[i].Observations + '</li>' + '<img src="' + data[i].image + '" width="100" height="100"/>' +       '<button type="submit" class="seenBee">This is the Bee I Saw</button>');
+            $("#prepopulatedBeeInfo").append('<img src="'+ data[i].image + '"width="200" height="200" /> <form action="/addBee"  method="post"> <input type="text" name="genus" value='+ data[i].genus+'> <input type="text" name="species" value='+ data[i].species+'> <input type="hidden" name="image" value='+ data[i].image+'> <textarea type="text" name="description" placeholder= example:'+ data[i].Observations+'></textarea><input type="hidden" name="lat" placeholder="Latitude" class="locationFieldLat"><input type="hidden" name="lng" placeholder="Longitude" class="locationFieldLong"><button  type="submit" name="">update bee info </button></form>');
           }
         })
     });
+
     </script>
   </div>
   <div class="col-md-3">
     {{!--Field for button to add THIS bee to peronal map--}}
-      <button type="submit" class="seenBee">This is the Bee I Saw</button>{{!--Need to grab specific bee by ID and take info to map pages--}}
+
   </div>
   </form>
   <div class="col-md-1">
@@ -72,27 +80,28 @@
 </div>
 
 <script>
-  $(document).ready(function() {
-    $("#locationBtn").on('click', function() {
-      var options = {
-        enableHighAccuracy: true,
-        timeout: 5000,
-        maximumAge: 0
-      };
+if(navigator.geolocation) {
+  browserSupportFlag = true;
+  navigator.geolocation.getCurrentPosition(function(position) {
+    $(".locationFieldLat").val(position.coords.latitude);
+    $(".locationFieldLong").val(position.coords.longitude);
+  }, function() {
+    handleNoGeolocation(browserSupportFlag);
+  });
+}
+// Browser doesn't support Geolocation
+else {
+  browserSupportFlag = false;
+  handleNoGeolocation(browserSupportFlag);
+}
+function handleNoGeolocation(errorFlag) {
+  if (errorFlag == true) {
+    alert("Geolocation service failed.");
+    initialLocation = newyork;
+  } else {
+    alert("Your browser doesn't support geolocation. We've placed you in Siberia.");
+    initialLocation = siberia;
+  }
+}
 
-      function success(pos) {
-        var crd = pos.coords;
-
-        myLoc = {lat: crd.latitude, lng: crd.longitude}
-        $('#locationFieldLat').val(myLoc.lat).val()
-        $('#locationFieldLong').val(myLoc.lng).val()
-      };
-
-      function error(err) {
-        console.warn('ERROR(' + err.code + '): ' + err.message);
-      };
-
-      navigator.geolocation.getCurrentPosition(success, error, options);
-    })
-  })
 </script>
