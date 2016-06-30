@@ -48,8 +48,7 @@ footer {
   overflow: hidden; }
 
 .beeFeedPost {
-  width: 10vw;
-  margin: 10px; }
+  width: 10vw; }
 
 .profileInfo {
   margin: 10px;
@@ -72,8 +71,8 @@ footer {
 #beePic, #googleExample {
   width: 28vw; }
 
-#beeFactImage, #avatarPic, #beeInfoImage {
-  width: 20vw; }
+#factId, #avatarPic, #beeInfoImage, #footerImage {
+  width: 90%; }
 
 #hiveIcon {
   position: absolute;
@@ -84,9 +83,6 @@ footer {
 
 #avatarPic {
   max-width: 90%;
-  max-height: 15%; }
-
-#footerImage {
-  width: 90%; }
+  max-height: 400px; }
 
 /*# sourceMappingURL=style.css.map */

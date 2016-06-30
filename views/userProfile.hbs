@@ -2,15 +2,14 @@
   <div class="col-md-3 userInfo">
     {{!--Lefthand section with userinfo and avatar image--}}
     <div class="row">
-      <div class="col-md-12">
-
+      <div class="col-md-12 col-xs-12">
         <img src={{username.avatar}} alt="User image/avatar" id="avatarPic"/>{{!--User image URL from user table, needs handlebars and knex--}}
       </div>
-
     </div>
+
     <div class="row">
-      <div class="col-md-12 profileInfo">
-        <h2>Profile Info</h2>
+      <div class="col-md-12 col-xs-12 profileInfo">
+        <h2>User Info</h2>
         <ul class="list-unstyled">
           <li>{{username.first_name}} {{username.last_name}}</li>{{!--First name from user table, needs handlebars and knex--}}
           <li>{{username.aboutMe}}</li>{{!--aboutMe from user table, needs handlebars and knex--}}
@@ -21,10 +20,10 @@
     </div>
   </div>
 
-  <div class="col-md-4 beeFeed">
+  <div class="col-md-4 col-xs-12 beeFeed">
     {{!--Middle section with bee feed, needs to prepend for added bees--}}
     <div class="row">{{!--Need to do a FOR EACH based off of bees added by the logged in user--}}
-      <div class="col-md-12">
+      <div class="col-md-12 col-xs-12">
         <h2>Bee's that I've Seen</h2>
           <ul class="list-unstyled">
         {{#each beeData}}
@@ -47,18 +46,15 @@
     </div>
   </div>
 
-  <div class="col-md-4 beeFacts col-xs-10">
+  <div class="col-md-4 col-md-offset-1 col-xs-10 col-xs-offset-1 beeFacts">
     <div class="row">
-      <div class="col-xs-1"></div>
-      <div class="col-xs-10">
+      <div class="col-md-12 col-xs-12">
         <h3>Bee Fact of the Day</h3>
       </div>
-      <div class="col-xs-1"></div>
     </div>
 
     <div class="row" id="beeFact">
-      <div class="col-md-2 col-xs-2"></div>
-      <div class="col-md-10 col-xs-10">
+      <div class="col-md-12">
         <img/>
         <p></p>
       </div>
@@ -80,9 +76,5 @@
         })
       })
     </script>
-    <div class="row">
-      <div class="col-md-12">
-      </div>
-    </div>
 </div>
 </div>
