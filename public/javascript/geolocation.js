@@ -1,10 +1,3 @@
-<div class="container">
-    <div id="map"></div>
-    <input type="button" value="show all pins" id="all">
-    <input type="button" value="show my pins" id="user">
-</div>
-
-<script>
 var myOptions = {
   zoom: 8,
   mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -36,5 +29,3 @@ function handleNoGeolocation(errorFlag) {
   }
   map.setCenter(initialLocation);
 }
-
-</script>

@@ -13,12 +13,20 @@ function ensureAuthenticated(request, response, next) {
     response.redirect('/');
 }
 /* GET home page. */
+router.get('/mapData', function(req, res) {
+    knex('bee_info').select().join('users', 'bee_info.user_id', 'users.id').where('users.google_id', req.user.id).then(function(data) {
+      res.json(data);
+    })
+});
+
 router.get('/beeseed', function(req, res) {
     res.json(beeseed);
 });
+
 router.get('/beefact', function(req, res) {
     res.json(beeFact);
 });
+
 router.get('/', function(req, res, next) {
     res.render('index', {
         title: 'The Hive',
@@ -32,15 +40,18 @@ router.get('/aboutUs', function(req, res, next) {
         user: req.user
     });
 });
+
 router.get('/auth/google', auth.passport.authenticate('google', {
     scope: ['openid email profile']
 }));
+
 router.get('/auth/google/callback', auth.passport.authenticate('google', {
         failureRedirect: '/auth/google'
     }),
     function(request, response) {
         response.redirect('/userProfile');
     });
+
 router.get('/userProfile', ensureAuthenticated, function(req, res, next) {
   return Promise.all([
     knex('users').select().where("google_id", req.user.id),
@@ -54,36 +65,42 @@ router.get('/userProfile', ensureAuthenticated, function(req, res, next) {
 
     });
 });
+
 router.get('/editProfile', ensureAuthenticated, function(req, res, next) {
   knex('users').where("google_id", req.user.id).then(function(data){
     res.render('editProfile', {
         data: data[0]
     });
+  });
 });
-});
+
 router.get('/addBee', ensureAuthenticated, function(req, res, next) {
   res.render('addBee', {
       title: 'Add Bee',
       user: req.user
   });
 })
+
 router.get('/beeInfo', ensureAuthenticated, function(req, res, next) {
     res.render('beeInfo', {
         title: 'Bee Info',
         user: req.user
     });
 });
+
 router.get('/beeMap', function(req, res, next) {
     res.render('beeMap', {
         title: 'Bee Map',
         user: req.user
     });
 });
+
 router.post('/editProfile', ensureAuthenticated, function(req, res, next) {
     knex('users').where("google_id", req.user.id).update(req.body).then(function(data){
     res.redirect('userProfile');
     })
 });
+
 router.post('/addBee', ensureAuthenticated, function(req, res, next) {
   knex('users').select('users.id').where("google_id", req.user.id).then(function(data){
     req.body.user_id = data[0].id;
@@ -92,9 +109,11 @@ router.post('/addBee', ensureAuthenticated, function(req, res, next) {
     })
   });
 });
+
 router.get('/logout',
     function(request, response) {
         request.logout();
         response.redirect('/');
-    });
+});
+
 module.exports = router;
