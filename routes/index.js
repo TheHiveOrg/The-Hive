@@ -67,12 +67,6 @@ router.get('/addBee', ensureAuthenticated, function(req, res, next) {
         user: req.user
     });
 });
-
-
-
-
-
-
 router.get('/beeMap', function(req, res, next) {
     res.render('beeMap', {
         title: 'Bee Map',
