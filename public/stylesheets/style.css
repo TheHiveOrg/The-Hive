@@ -71,7 +71,7 @@ footer {
 #beePic, #googleExample {
   width: 28vw; }
 
-#factId, #avatarPic, #beeInfoImage, #footerImage {
+#factId, #avatarPic, #beeInfoImage, #footerImage, .usImage {
   width: 90%; }
 
 #hiveIcon {

@@ -31,7 +31,7 @@ for(var i = 0; i < beeData.length; i++){
 function initMap() {
 
 
-  $.get("http://localhost:3000/beeseed", function(data) {
+  $.get("http://the-hive-g25.herokuapp.com/beeseed", function(data) {
     addPins(data)
   });
 
@@ -83,9 +83,9 @@ function handleNoGeolocation(errorFlag) {
 $(document).ready(function() {
 $("input[type='button']").click(function() {
     switch(this.id) {
-      case 'all': var Data = $.get("http://localhost:3000/beeseed");
+      case 'all': var Data = $.get("http://the-hive-g25.herokuapp.com/beeseed");
       break;
-      case 'user': var Data = $.get("http://localhost:3000/mapData");
+      case 'user': var Data = $.get("http://the-hive-g25.herokuapp.com/mapData");
       break;
     }
     Data.then(function(data) {

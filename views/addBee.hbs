@@ -49,7 +49,7 @@
 <script>
     var prepopData = new Promise(function(resolve, reject){
       var databaseResults = [];
-      $.get("http://localhost:3000/beeseed", function(data){
+      $.get("http://the-hive-g25.herokuapp.com/beeseed", function(data){
         return data;
       }).then(function(data){
         console.log(data)
