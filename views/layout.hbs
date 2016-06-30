@@ -37,8 +37,13 @@
               <a class="navbar-brand" href="/"><img id="hiveIcon" src="/images/the-hive.png" alt="Our Icon"/></a>
               <div class="collapse navbar-collapse" id="hiveNav">
                 <ul class="nav navbar-nav">
+<<<<<<< HEAD
                   {{#if user}}
                   <li id="homeButton" class="navButton"><a href="/userProfile">Home</a></li>
+=======
+                  <li id="homeButton" class="navButton"><a href="/userProfile/{{this.id}}">Home</a></li>
+                  <li class="navButton"><a href="/beeMap">Bee Map</a></li>
+>>>>>>> beedata
                   <li class="navButton"><a href="/editProfile">Edit My Info</a></li>
                   {{/if}}
                   <li class="navButton"><a href="/beeMap">Bee Map</a></li>
