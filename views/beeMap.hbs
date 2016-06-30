@@ -3,6 +3,41 @@
     <input type="button" value="show all pins" id="all">
     <input type="button" value="show my pins" id="user">
 </div>
+<script>
+  var map;
+
+  function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 40.0902, lng: -95.7129},
+      zoom: 5
+    });
+
+var infowindow = new google.maps.InfoWindow();
+
+var beeData = new Promise(function(resolve, reject) {
+  var allData = [];
+$.get("http://the-hive-g25.herokuapp.com/beeseed", function(data) {
+  return data;
+}).then(function(data) {
+  var beeData = [];
+  data.forEach(function(data) {
+    beeData.push(data);
+    })
+
+    for(var i = 0; i < beeData.length; i++){
+      var image = '<h5>'+ beeData[i].Species + '</h5>' + '<img src="' + beeData[i]["Image URL"]+'" width="100" height="100" />'
+      var marker = new google.maps.Marker({
+        position: beeData[i].location,
+        map: map,
+        title: image
+      });
+    google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent(this.title);
+        infowindow.open(map, this);
+      });
+    }
+  })
+});
 
 <script>
 var myOptions = {

@@ -4,7 +4,7 @@
     <script type="text/javascript">
         $(document).ready(function(){
           $("#addABee").on('click', function(){
-            $("#addABeeForm").css("display", "block");
+            $("#addABeeForm").toggle();
           });
         });
     </script>
@@ -25,9 +25,11 @@
         <label for="image">Bee Image:</label>
         <input type="url" name="image" placeholder="Enter an image URL">{{!--Image URL to be added to database--}}
       </div>
-      <div class="form-group">
         <label for="Location">Location:</label><button type="button" id="locationBtn">Get Current Location</button>
+      <div class="form-group">
         <input type="float" name="lat" placeholder="Latitude" id="locationFieldLat">{{!--If we grab lat and long from browser we can replace placeholder="" with value="" and fill that in with handle bars for req.params for each--}}
+      </div>
+      <div class="form-group">
         <input type="float" name="lng" placeholder="Longitude" id="locationFieldLong">
       </div>
       <button type="submit" name="">update bee info </button>{{!--This submit needs to take all the above information and create a new bee instance with it, possibly use it to append the entire page???--}}
