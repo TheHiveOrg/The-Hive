@@ -237,7 +237,7 @@ module.exports = [
     lat: 40,
     lng: -106.213,
     "Observations": "adult female",
-    image: "http://www.bwars.com/sites/www.bwars.com/files/genus_images/halictus%20rubicundus%20female%20IMG_3283.JPG"
+    image: "http://www.bembix.de/gallery/apidae-bilder/8531-hym-apidae-halictus-rubicundus-female-kalksteinerbachtal-050804.jpg"
   },
   {
     "genus": "Megachile",

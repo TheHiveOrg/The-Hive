@@ -103,9 +103,17 @@ router.get('/editProfile', ensureAuthenticated, function(req, res, next) {
 });
 
 router.get('/addBee', ensureAuthenticated, function(req, res, next) {
+  splitBees = beeseed.reduce((result,item, i) => {
+    var index = Math.floor(i/4)
+    result[index] = result[index] || []
+    result[index].push(item)
+    return result
+  }, [])
+  console.log(splitBees);
     res.render('addBee', {
-        title: 'Add Bee',
-        user: req.user
+      title: 'Add Bee',
+      user: req.user,
+      splitBees: splitBees
     });
 });
 
