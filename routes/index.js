@@ -21,10 +21,14 @@ router.get('/mapData', function(req, res) {
     });
 });
 
-router.get('/beeseed', function(req, res) {
+router.get('/userData', function(req, res) {
     knex('bee_info').select('bee_info.species', 'bee_info.image', 'users.username', 'bee_info.lat', 'bee_info.lng').join('users', 'bee_info.user_id', 'users.id').then(function(data) {
         res.json(data);
-    })
+    });
+});
+
+router.get('/beeseed', function(req, res) {
+    res.json(beeseed);
 });
 
 router.get('/beefact', function(req, res) {
