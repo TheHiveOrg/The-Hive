@@ -29,7 +29,9 @@ for(var i = 0; i < beeData.length; i++){
   }
 }
 function initMap() {
-  $.get("http://the-hive-g25.herokuapp.com/beeseed", function(data) {
+
+
+  $.get("https://the-hive-g25.herokuapp.com/userData", function(data) {
     addPins(data)
   });
 
@@ -69,10 +71,10 @@ else {
 
 function handleNoGeolocation(errorFlag) {
   if (errorFlag == true) {
-
+    alert("Geolocation service failed.");
     initialLocation = newyork;
   } else {
-
+    alert("Your browser doesn't support geolocation. We've placed you in Siberia.");
     initialLocation = siberia;
   }
   map.setCenter(initialLocation);
@@ -81,9 +83,9 @@ function handleNoGeolocation(errorFlag) {
 $(document).ready(function() {
 $("input[type='button']").click(function() {
     switch(this.id) {
-      case 'all': var Data = $.get("http://the-hive-g25.herokuapp.com/beeseed");
+      case 'all': var Data = $.get("https://the-hive-g25.herokuapp.com/userData");
       break;
-      case 'user': var Data = $.get("http://the-hive-g25.herokuapp.com/mapData");
+      case 'user': var Data = $.get("https://the-hive-g25.herokuapp.com/mapData");
       break;
     }
     Data.then(function(data) {
