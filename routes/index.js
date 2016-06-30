@@ -12,6 +12,8 @@ function ensureAuthenticated(request, response, next) {
     }
     response.redirect('/');
 }
+
+
 /* GET home page. */
 router.get('/beeseed', function(req, res) {
     res.json(beeseed);
@@ -98,6 +100,21 @@ router.get('/:id/delete', function(req,res,next){
     res.redirect('/userProfile');
   });
 });
+router.get('/:id/edit_beeInfo', function(req,res,next){
+// console.log(req.params.id);
+  knex('bee_info').select().where('bee_info.id',req.params.id).then(function(data){
+    res.render('edit_beeInfo', {beeData: data});
+  });
+});
+
+  router.post('/:id/edit_beeInfo', ensureAuthenticated, function(req, res, next) {
+    knex('bee_info').select('bee_info.id as bee_info_id' , '*').update(req.body).where('bee_info.id',req.params.id).then(function(data){
+      console.log(req.params);
+      console.log(req.body);
+      res.redirect('/userProfile');
+    });
+  });
+
 router.get('/logout',
     function(request, response) {
         request.logout();

@@ -42,9 +42,11 @@
           <li>{{this.genus}}</li>
           <li>{{this.species}}</li>
           <li>{{this.description}}</li>
-          <li> {{this.bee_info_id}}</li>
           <li>
             <a href="/{{this.bee_info_id}}/delete"><button>delete</button></a>
+          </li>
+          <li>
+            <a href="/{{this.bee_info_id}}/edit_beeInfo"><button>edit bee info</button></a>
           </li>
         {{/each}}
         </ul>

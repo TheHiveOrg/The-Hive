@@ -1,0 +1,29 @@
+{{#each beeData}}
+  <li>
+    <img src="{{this.image}}" width='100' height='100'/>
+  </li>
+  <li>genus:{{this.genus}}</li>
+  <li>species:{{this.species}}</li>
+  <li>description:{{this.description}}</li>
+  {{/each}}
+    <form class="" action="" method="post">
+      <div class="form-group">
+        <label for="genus">Genus:</label>
+        <input type="text" name="genus" placeholder="Enter Genus Here">{{!--Genus to be added to database--}}
+      </div>
+      <div class="form-group">
+        <label for="species">Species:</label>
+        <input type="text" name="species" placeholder="Enter Species Here">{{!--Species to be added to database--}}
+      </div>
+      <div class="form-group">
+        <label for="description">Bee Description:</label>
+        <textarea name="description" rows="8" cols="40" placeholder="What did the bee look like? How big was it? What was it doing?"></textarea>{{!--Description to be added to database--}}
+      </div>
+      <div class="form-group">
+        <label for="image">Bee Image:</label>
+        <input type="url" name="image" placeholder="Enter an image URL">{{!--Image URL to be added to database--}}
+      </div>
+
+      <button type="submit" name="">update bee info </button>
+
+    </form>
