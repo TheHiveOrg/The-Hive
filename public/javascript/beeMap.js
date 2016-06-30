@@ -31,7 +31,11 @@ for(var i = 0; i < beeData.length; i++){
 function initMap() {
 
 
+<<<<<<< HEAD
   $.get("http://the-hive-g25.herokuapp.com/beeseed", function(data) {
+=======
+  $.get("http://localhost:3000/userData", function(data) {
+>>>>>>> 6e343e169255f661780fec2f88ce4b68b2b2aaef
     addPins(data)
   });
 

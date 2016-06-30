@@ -48,12 +48,21 @@
   <div class="col-md-4">
 <script>
     var prepopData = new Promise(function(resolve, reject){
+<<<<<<< HEAD
     $.get("http://localhost:3000/beeseed", function(data){
       return data;
     }).then(function(data){
       console.log(data)
         for (var i=0; i<data.length; i++){
           $("#prepopulatedBeeInfo").append('<img src="'+ data[i].image + '"width="200" height="200" /> <form action="/addBee"  method="post"> <input type="text" name="genus" value='+ data[i].genus+'> <input type="text" name="species" value='+ data[i].species+'> <input type="hidden" name="image" value='+ data[i].image+'> <textarea type="text" name="description" placeholder= example:'+ data[i].Observations+'></textarea><input type="hidden" name="lat" placeholder="Latitude" class="locationFieldLat"><input type="hidden" name="lng" placeholder="Longitude" class="locationFieldLong"><button  type="submit" name="">update bee info </button></form>');
+=======
+      var databaseResults = [];
+      $.get("http://localhost:3000/beeseed", function(data){
+        return data;
+      }).then(function(data){
+          for (var i=0; i<data.length; i++){
+            $("#prepopulatedBeeInfo").append('<img src="'+ data[i].image + '"width="200" height="200" /> <form action="/addBee"  method="post"> <input type="text" name="genus" value='+ data[i].genus+'> <input type="text" name="species" value='+ data[i].species+'> <input type="hidden" name="image" value='+ data[i].image+'> <textarea type="text" name="description" placeholder= example:'+ data[i].Observations+'></textarea><input type="hidden" name="lat" placeholder="Latitude" class="locationFieldLat"><input type="hidden" name="lng" placeholder="Longitude" class="locationFieldLong"><button  type="submit" name="">update bee info </button></form>');
+>>>>>>> 6e343e169255f661780fec2f88ce4b68b2b2aaef
 
         }
       })
