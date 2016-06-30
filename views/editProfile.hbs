@@ -1,8 +1,5 @@
 <div class="row">
-  <div class="col-md-4">
-    {{!--Left side space filler--}}
-  </div>
-  <div class="col-md-4">
+  <div class="col-md-4 col-md-offset-4">
     <h1>Edit Your Profile</h1>
       <form action="/editProfile" method="post">
         <div class="form-group">
@@ -20,7 +17,7 @@
 
         <div class="form-group">
           <label for="aboutMe">About Me:</label>
-          <textarea name="aboutMe" rows="8" cols="40" placeholder="Tell us about yourself" value="">{{data.aboutMe}}</textarea>{{!--put handlebars with knex and users aboutMe IF it exists into value="", remove placeholder--}}
+          <textarea name="aboutMe" rows="6" maxlength="255" cols="40" placeholder="Tell us about yourself" value="">{{data.aboutMe}}</textarea>{{!--put handlebars with knex and users aboutMe IF it exists into value="", remove placeholder--}}
 
         </div>
         <button type="submit">Save These Changes</button>

@@ -1,29 +1,27 @@
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
 {{#each beeData}}
-  <li>
-    <img src="{{this.image}}" width='100' height='100'/>
-  </li>
-  <li>genus:{{this.genus}}</li>
-  <li>species:{{this.species}}</li>
-  <li>description:{{this.description}}</li>
-  {{/each}}
+  <img src="{{this.image}}" id="myBeeFeed"/>
     <form class="" action="" method="post">
       <div class="form-group">
         <label for="genus">Genus:</label>
-        <input type="text" name="genus" placeholder="Enter Genus Here">{{!--Genus to be added to database--}}
+        <input type="text" name="genus" value="{{this.genus}}" placeholder="Enter Genus">{{!--Genus to be added to database--}}
       </div>
       <div class="form-group">
         <label for="species">Species:</label>
-        <input type="text" name="species" placeholder="Enter Species Here">{{!--Species to be added to database--}}
+        <input type="text" name="species" value="{{this.species}}" placeholder="Enter Species">{{!--Species to be added to database--}}
       </div>
       <div class="form-group">
         <label for="description">Bee Description:</label>
-        <textarea name="description" rows="8" cols="40" placeholder="What did the bee look like? How big was it? What was it doing?"></textarea>{{!--Description to be added to database--}}
+        <textarea name="description" rows="6" cols="40" maxlength="255" placeholder="Description of the bee: What'd it look like? How big was it?">{{this.description}}</textarea>{{!--Description to be added to database--}}
       </div>
       <div class="form-group">
         <label for="image">Bee Image:</label>
-        <input type="url" name="image" placeholder="Enter an image URL">{{!--Image URL to be added to database--}}
+        <input type="url" name="image" value="{{this.image}}" placeholder="Enter an image URL">{{!--Image URL to be added to database--}}
       </div>
-
-      <button type="submit" name="">update bee info </button>
-
+      <button type="submit" name="">Update Bee Info</button>
     </form>
+  {{/each}}
+</div>
+</div>
+</div>
