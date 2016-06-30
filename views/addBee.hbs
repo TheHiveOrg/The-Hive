@@ -49,7 +49,7 @@
 <script>
     var prepopData = new Promise(function(resolve, reject){
       var databaseResults = [];
-      $.get("http://localhost:3000/beeseed", function(data){
+      $.get("http://the-hive-g25.herokuapp.com/beeseed", function(data){
         return data;
       }).then(function(data){
           for (var i=0; i<data.length; i++){
@@ -86,10 +86,8 @@ else {
 }
 function handleNoGeolocation(errorFlag) {
   if (errorFlag == true) {
-    alert("Geolocation service failed.");
     initialLocation = newyork;
   } else {
-    alert("Your browser doesn't support geolocation. We've placed you in Siberia.");
     initialLocation = siberia;
   }
 }
