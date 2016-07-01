@@ -80,7 +80,6 @@ router.get('/friendProfile/:id', ensureAuthenticated, function(req, res, next) {
     knex('users').select('users.id as users_id', '*').where('users.id', req.params.id),
     knex('bee_info').join('users', 'user_id', '=', 'users.id').where('user_id', req.params.id)
   ]).then(function(data) {
-      console.log(data);
     res.render('friendProfile', {
       username: data[0][0],
       user: req.user,
