@@ -37,21 +37,26 @@
 </div>
 <h3>...Or Pick From the List:</h3>
 <div class="row" id="prepopulatedBeeInfo">
-  <form action="/addBee" method="post">
     {{#each splitBees}}
       <div class="row">
         <div class="col-md-2"></div>
         {{#each this}}
+        <form action="/addBee" method="post">
           <div class="col-md-2 databaseBees">
-            <div ><img src="{{this.image}}" width="100px" height="100px"/></div>
+            <div><img src="{{this.image}}" width="100px" height="100px"/></div>
             <div>{{this.genus}}</div>
+            <input type="hidden" name="genus" value="{{this.genus}}" />
             <div>{{this.species}}</div>
+            <input type="hidden" name="species" value="{{this.species}}" />
+            <input type="hidden" name="lat" value="" class="locationFieldLat" />
+            <input type="hidden" name="lng" value="" class="locationFieldLong" />
+            <input type="hidden" name="image" value="{{this.image}}" />
             <div><button type="submit" name="">This is the Bee I Saw</button></div>
           </div>
+            </form>
         {{/each}}
       </div>
     {{/each}}
-  </form>
 </div>
 
 <script>
