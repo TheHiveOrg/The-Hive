@@ -15,7 +15,6 @@ function addPins(data){
     });
 
 for(var i = 0; i < beeData.length; i++){
-  console.log(beeData[i]);
       var image = '<h5>'+ beeData[i].species + '</h5>' + '<img src="' + beeData[i].image +'" width="100" height="100" />' + '<a href="/friendProfile/' + beeData[i].id +'"><p>' + beeData[i].first_name +' '+ beeData[i].last_name + '</p></a>'
       var marker = new google.maps.Marker({
           position: {lat: beeData[i].lat, lng: beeData[i].lng} ,
@@ -87,11 +86,7 @@ function handleNoGeolocation(errorFlag) {
 $(document).ready(function() {
 $("input[type='button']").click(function() {
     switch(this.id) {
-<<<<<<< HEAD
       case 'all': var Data = $.get("https://localhost:3000/userData");
-=======
-      case 'all': var Data = $.get("http://localhost:3000/userData");
->>>>>>> bd7c02904ac27ac08c726b6090d7fb3e2af55c7c
       break;
       case 'user': var Data = $.get("http://localhost:3000/mapData");
       break;
