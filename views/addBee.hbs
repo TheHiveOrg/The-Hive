@@ -43,9 +43,11 @@
         <div class="col-md-2"></div>
         {{#each this}}
           <div class="col-md-2 databaseBees">
-            <div ><img src="{{this.image}}" width="100px" height="100px"/></div>
+            <div><img src="{{this.image}}" width="100px" height="100px"/></div>
             <div>{{this.genus}}</div>
+            <input type="hidden" name="genus" value="{{this.genus}}" />
             <div>{{this.species}}</div>
+            <input type="hidden"
             <div><button type="submit" name="">This is the Bee I Saw</button></div>
           </div>
         {{/each}}

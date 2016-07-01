@@ -65,7 +65,6 @@ router.get('/userProfile', ensureAuthenticated, function(req, res, next) {
         knex('users').select('users.id as users_id', '*').where("google_id", req.user.id),
         knex('bee_info').select('bee_info.id as bee_info_id', '*').join('users', 'user_id', '=', 'users.id').where('google_id', req.user.id)
     ]).then(function(data) {
-
         console.log(data);
         res.render('userProfile', {
             username: data[0][0],
