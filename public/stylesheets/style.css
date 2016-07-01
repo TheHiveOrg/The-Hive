@@ -1,15 +1,30 @@
+@import url(https://fonts.googleapis.com/css?family=Amatica+SC:400,700);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
 body {
   padding: 10px 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   width: 100%; }
 
 a {
-  color: #00B7FF; }
+  color: #00B7FF;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1.2em; }
+
+p, h3, h4, li {
+  font-family: "Source Sans Pro", sans-serif; }
+
+p, li {
+  font-size: 1.1em; }
+
+h1, h2 {
+  font-family: "Amatica SC", cursive;
+  font-size: 3em; }
 
 button {
   background: none;
   border-style: none;
-  color: #00B7FF; }
+  color: #00B7FF;
+  font-family: "Source Sans Pro", sans-serif; }
 
 button:hover {
   color: black; }
@@ -57,6 +72,13 @@ footer {
 .profileInfo {
   margin: 10px;
   padding: 0 0 10px 10px; }
+
+.scrollIt {
+  height: 35vw;
+  overflow-y: scroll; }
+
+::-webkit-scrollbar {
+  display: none; }
 
 #addABeeForm {
   display: none; }
